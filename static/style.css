@@ -8,6 +8,13 @@ body {
         background-color: #999fff;
     }
 
+    .logo {
+        width: 80px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
     h1 {
       font-size: 50px;
       text-align: center;
@@ -37,6 +44,7 @@ body {
         text-align: left;
         color: #00BBAA;
     }
+
 }
 
 

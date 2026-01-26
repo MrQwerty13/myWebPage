@@ -15,17 +15,21 @@
 
     <hr>
 
-    <h2 title="Awwww, hottie">
-      My list of anime:
-    </h2>
+    <div class="library">
+      <h2 title="Awwww, hottie">
+        My list of anime:
+      </h2>
 
-    {% for genre, titles in anime.items() %}
-      <h3 title="It is the best ganre">{{ genre }}  ☟</h3>
-      <ul>
-        {% for title in titles %}
-          <li title="I love it!">⁍ {{ title }}</li>
+      <div class="anime">
+        {% for genre, titles in anime.items() %}
+          <h3 title="It is the best ganre">{{ genre }}  ☟</h3>
+          <ul>
+            {% for title in titles %}
+              <li title="I love it!">⁍ {{ title }}</li>
+            {% endfor %}
+          </ul>
         {% endfor %}
-      </ul>
-    {% endfor %}
+      </div>
+    </div>
   </body>
 </html>
