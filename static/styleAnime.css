@@ -1,57 +1,95 @@
 body {
-    font-family: "American Typewriter", sans-serif;
-    text-align: center;
-    background: #111;
-    .top-nav {
+  font-family: "American Typewriter", sans-serif;
+  background: #0e0e11;
+  color: #ddd;
+  margin: 0;
+}
+.top-nav {
         background: #111;
         border-bottom: 1px solid #333;
-    }
-    .nav-container {
+}
+.nav-container {
         max-width: 1000px;
         margin: 0 auto;
         padding: 12px 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-    .nav-logo a {
+}
+.nav-logo a {
       color: #74ff82;
       font-size: 20px;
       font-weight: bold;
       text-decoration: none;
-    }
-    .nav-links a {
+}
+.nav-links a {
       margin-left: 20px;
       color: cadetblue;
       text-decoration: none;
       font-size: 14px;
-    }
-    .logo {
+}
+.logo {
         width: 80px;
         height: auto;
         display: block;
         margin: 0 auto;
-    }
-    h1 {
-      font-size: 50px;
-      text-align: center;
-      color: #74ff82;
-    }
-    h2 {
-      text-align: left;
-      color: #5d5fff;
-    }
-    h3 {
-        text-align: left;
-        color: #ff8eb1;
-    }
-    ul {
-        list-style-type: none;
-    }
-    li {
-        text-align: left;
-        color: #00BBAA;
-    }
+}
+/* ===== LIBRARY CONTAINER ===== */
+.library {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #15151b;
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
 }
 
+/* ===== HEADINGS ===== */
+h2 {
+  color: #7aa2ff;
+  margin-bottom: 20px;
+  text-align: left;
+}
 
+h3 {
+  color: #ff9ecb;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* ===== LIST RESET ===== */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ===== ANIME CARD BUTTON ===== */
+.anime-card {
+  display: block;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+
+  background: #1f1f2b;
+  border-radius: 10px;
+
+  color: #c7ffd8;
+  text-decoration: none;
+  font-size: 16px;
+
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.anime-card:hover {
+  background: #2a2a3d;
+  border-color: #7aa2ff;
+  transform: translateX(6px);
+  color: #ffffff;
+}
+
+/* ===== OPTIONAL: CLICK FEEDBACK ===== */
+.anime-card:active {
+  transform: scale(0.98);
+}

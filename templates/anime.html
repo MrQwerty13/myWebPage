@@ -7,6 +7,7 @@
 </head>
 
 <body>
+  <!-- ===== NAVIGATION BAR ===== -->
   <header class="top-nav">
     <div class="nav-container">
       <div class="nav-logo">
@@ -20,6 +21,8 @@
       </nav>
     </div>
   </header>
+
+  <!-- ===== MAIN LIBRARY ===== -->
   <main class="library">
     <h2>My list of anime:</h2>
     <section class="anime">
@@ -27,7 +30,11 @@
         <h3>{{ genre }} ☟</h3>
         <ul>
           {% for title in titles %}
-            <li>⁍ {{ title }}</li>
+            <li>
+              <a href="https://apple.com" target="_blank" class="anime-card">
+                {{ title }}
+              </a>
+            </li>
           {% endfor %}
         </ul>
       {% endfor %}
