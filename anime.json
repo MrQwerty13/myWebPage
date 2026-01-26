@@ -1,64 +1,77 @@
 {
-  "ROMANTIC": [
+  "РОМАНТИКА": [
     {
-      "title": "Tora-dora",
-      "description": "A high school story about Ryuuji and Taiga, two students with opposite personalities who team up to help each other with their crushes, only to gradually grow closer themselves. A heartwarming mix of comedy, romance, and friendship."
+      "title": "ТораДора!",
+      "description": "История о школьниках Рюдзи и Тайге — двух людях с противоположными характерами, которые объединяются, чтобы помочь друг другу с любовными чувствами. Со временем их дружба перерастает во что-то большее. Тёплое сочетание комедии, романтики и искренних эмоций.",
+      "link": "https://site.yummyani.me/catalog/item/toradora"
     },
     {
-      "title": "Fly me to the Moon",
-      "description": "A young man falls in love at first sight and marries a mysterious girl, despite knowing almost nothing about her. Filled with cute, funny, and heartwarming moments of everyday life."
+      "title": "Унеси меня на Луну",
+      "description": "Юноша влюбляется с первого взгляда и неожиданно женится на загадочной девушке, почти ничего о ней не зная. Уютное, милое аниме о повседневной жизни, любви и семейном тепле.",
+      "link": "https://site.yummyani.me/catalog/item/unesi-menya-na-lunu"
     },
     {
-      "title": "Re:Zero",
-      "description": "Subaru Natsuki is transported to another world where he discovers he has the power to return from death, reliving moments to change outcomes. Romance, drama, and suspense are central to his journey."
+      "title": "Re:Zero — Жизнь с нуля в альтернативном мире",
+      "description": "Субару Нацуки попадает в другой мир и обнаруживает, что после смерти он возвращается назад во времени. Через боль, страдания и любовь он пытается изменить судьбу и спасти близких.",
+      "link": "https://site.yummyani.me/catalog/item/zhizn-v-drugom-mire-s-nulya"
     },
     {
-      "title": "The Girl from the Era of Tai-sei",
-      "description": "A historical romantic tale about a young woman navigating the trials of love and society during the Tai-sei period. Filled with heartfelt moments and dramatic twists."
+      "title": "Сказание о девушке эпохи Тайсё",
+      "description": "Романтическая история о молодой девушке, живущей в эпоху Тайсё. Любовь, социальные трудности и борьба за своё счастье на фоне исторических событий.",
+      "link": "https://site.yummyani.me/catalog/item/skazka-o-devushke-epohi-tayse"
     }
   ],
-  "ISEKAI": [
+  "ИСЕКАЙ": [
     {
-      "title": "Reincarnation of jobless",
-      "description": "A man dies and is reborn in a fantasy world with a chance to fix his past mistakes. Focuses on magic, adventure, and the personal growth of the main character."
+      "title": "Реинкарнация безработного: История о приключениях в другом мире",
+      "description": "Мужчина с неудачным прошлым умирает и перерождается в фэнтезийном мире, получив шанс начать жизнь заново. История взросления, магии, ошибок и личного роста.",
+      "link": "https://site.yummyani.me/catalog/item/reinkarnaciya-bezrabotnogo-istoriya-o-priklyucheniyah-v-drugom-mire"
     },
     {
-      "title": "About how I became a slime",
-      "description": "The main character dies and is reincarnated as a slime in a fantasy world, gradually gaining powers and building his own kingdom. A fun blend of humor, action, and world-building."
+      "title": "О моём перерождении в слизь",
+      "description": "Главный герой погибает и перерождается в другом мире в виде слизи. Постепенно он становится сильнее, находит союзников и создаёт собственное государство.",
+      "link": "https://site.yummyani.me/catalog/item/o-moem-pererozhdenii-v-sliz"
     },
     {
-      "title": "The World's Most Dangerous Assassin Reincarnated as an Aristocrat",
-      "description": "A highly skilled assassin dies and is reborn as a noble in a fantasy world. He must adapt his deadly skills to aristocratic life while facing new challenges and intrigue."
+      "title": "Лучший в мире ассасин, переродившийся в другом мире как аристократ",
+      "description": "Легендарный убийца умирает и перерождается в семье знатных аристократов. Используя навыки прошлой жизни, он выполняет опасную миссию в новом мире.",
+      "link": "https://site.yummyani.me/catalog/item/luchshij-v-mire-assasin-pererodivshijsya-v-drugom-mire-kak-aristokrat"
     }
   ],
-  "ACTION": [
+  "ЭКШЕН": [
     {
-      "title": "Attack on Titan",
-      "description": "Humanity fights for survival against giant humanoid Titans. Epic battles, political intrigue, and intense drama define this action-packed series."
+      "title": "Атака титанов",
+      "description": "Человечество борется за выживание против гигантских титанов. Масштабные битвы, политические интриги и тяжёлые моральные выборы делают сериал невероятно напряжённым.",
+      "link": "https://site.yummyani.me/catalog/item/vtorzhenie-gigantov"
     },
     {
-      "title": "Demon Slayer",
-      "description": "Tanjiro Kamado becomes a demon slayer to save his sister and avenge his family. Stunning fight scenes, emotional depth, and powerful bonds drive the story."
+      "title": "Клинок, рассекающий демонов",
+      "description": "Тандзиро становится охотником на демонов, чтобы спасти сестру и отомстить за семью. Эмоциональная история с красивыми боями и сильной атмосферой.",
+      "link": "https://site.yummyani.me/catalog/item/klinok-rassekayushij-demonov"
     },
     {
-      "title": "Sword Art Online",
-      "description": "Players become trapped in a virtual reality MMORPG and must fight to survive. Adventure, romance, and high-stakes battles create an immersive experience."
+      "title": "Мастера меча онлайн",
+      "description": "Игроки оказываются заперты в виртуальной MMORPG, где смерть в игре означает смерть в реальности. Приключения, любовь и выживание в цифровом мире.",
+      "link": "https://site.yummyani.me/catalog/item/mastera-mecha-onlajn"
     }
   ],
-  "MYSTERY": [
+  "ДЕТЕКТИВ / ТРИЛЛЕР": [
     {
-      "title": "Death Note",
-      "description": "Light Yagami finds a notebook that kills anyone whose name is written in it. A thrilling battle of wits between genius minds unfolds."
+      "title": "Тетрадь смерти",
+      "description": "Лайт Ягами находит тетрадь, способную убивать людей. Начинается интеллектуальная дуэль между гениальными умами, где каждая ошибка может стать последней.",
+      "link": "https://site.yummyani.me/catalog/item/tetrad-smerti-tv"
     },
     {
-      "title": "Detective Already Dead",
-      "description": "A young detective teams up with a legendary deceased investigator to solve mysterious cases. Suspense, intrigue, and clever deductions fill the story."
+      "title": "Детектив уже мёртв",
+      "description": "Юноша оказывается втянутым в череду загадочных дел, связанных с легендарным детективом. Тайны, расследования и неожиданные повороты сюжета.",
+      "link": "https://site.yummyani.me/catalog/item/detektiv-uzhe-mertv"
     }
   ],
-  "FANTASY": [
+  "ФЭНТЕЗИ": [
     {
-      "title": "My Unique Pick: Made in Abyss",
-      "description": "A young girl descends into a mysterious, dangerous abyss to find her mother, discovering strange creatures and ancient relics. Emotional depth, adventure, and stunning world-building."
+      "title": "Созданный в Бездне",
+      "description": "Девочка отправляется в опасную и загадочную Бездну, чтобы найти свою мать. Уникальный мир, сильные эмоции и мрачная атмосфера приключений.",
+      "link": "https://site.yummyani.me/catalog/item/sozdannyj-v-bezdne"
     }
   ]
 }

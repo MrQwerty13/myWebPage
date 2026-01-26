@@ -4,10 +4,20 @@ def get_data():
     with open("anime.json", encoding="utf-8") as f:
         data = json.load(f)
 
-    anime_dict = {genre: [[item['title'], item['description']] for item in items]
-                  for genre, items in data.items()}
+    anime_dict = {
+        genre: [
+            {
+                "title": item["title"],
+                "description": item["description"],
+                "link": item["link"]
+            }
+            for item in items
+        ]
+        for genre, items in data.items()
+    }
 
     return anime_dict
+
 
 
 import flask as f
@@ -18,6 +28,7 @@ app = f.Flask(__name__)
 @app.route('/')
 def show_home():
     return f.render_template("home.html")
+@app.route('/anime')
 @app.route('/anime')
 def show_anime():
     anime_dict = get_data()
