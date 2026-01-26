@@ -2,9 +2,29 @@ body {
     font-family: "American Typewriter", sans-serif;
     text-align: center;
     background: #111;
-    hr {
-        height: 10px;
-        background-color: #999fff;
+    .top-nav {
+        background: #111;
+        border-bottom: 1px solid #333;
+    }
+    .nav-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .nav-logo a {
+      color: #74ff82;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .nav-links a {
+      margin-left: 20px;
+      color: cadetblue;
+      text-decoration: none;
+      font-size: 14px;
     }
     h1 {
       font-size: 50px;
@@ -17,11 +37,6 @@ body {
     }
     h3 {
         text-align: left;
-        color: #ff8eb1;
-    }
-    a {
-        font-family: "Comic Sans MS", sans-serif;
-        text-decoration: none;
         color: #ff8eb1;
     }
 }

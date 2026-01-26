@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-      <link rel="stylesheet" href="{{ url_for('static', filename='styleAnime.css') }}">
-      <title>Bear's Anime</title>
-  </head>
-  <body>
-    <hr>
-    <h1 title="Bear's Anime">
-      Bear's Anime
-    </h1>
-    <hr>
-    <div class="library">
-      <h2 title="Awwww, hottie">
-          My list of anime:
-      </h2>
-      <div class="anime">
-        {% for genre, titles in anime.items() %}
-          <h3 title="It is the best ganre">{{ genre }} ☟</h3>
-          <ul>
-            {% for title in titles %}
-              <li title="I love it!">⁍ {{ title }}</li>
-            {% endfor %}
-          </ul>
-        {% endfor %}
+<head>
+  <meta charset="UTF-8">
+  <title>Bear's Anime</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styleAnime.css') }}">
+</head>
+
+<body>
+  <header class="top-nav">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="/anime">Bear's Anime</a>
       </div>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/anime">Anime Library</a>
+        <a href="/">Weather Broadcast</a>
+        <a href="/">About Author</a>
+      </nav>
     </div>
+  </header>
+  <main class="library">
+    <h2>My list of anime:</h2>
+    <section class="anime">
+      {% for genre, titles in anime.items() %}
+        <h3>{{ genre }} ☟</h3>
+        <ul>
+          {% for title in titles %}
+            <li>⁍ {{ title }}</li>
+          {% endfor %}
+        </ul>
+      {% endfor %}
+    </section>
+  </main>
 </body>
 </html>

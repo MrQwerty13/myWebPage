@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="{{ url_for('static', filename='styleHome.css') }}">
-        <title>Bear</title>
-    </head>
-    <body>
-        <hr>
-        <h1 title="Bear">Bear</h1>
-        <hr>
-        <h2 title="Hi there!">Welcome to Bear's web-page</h2>
-        <h2 title="Just click on one of them bellow 😁">This web-page has:</h2>
-        <h3>
-            <a href="/">Home Page</a>
-            <br>
-            <a href="/anime">Anime Library</a>
-            <br>
-            <a href="/">Weather Broadcast</a>
-        </h3>
-    </body>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleHome.css') }}">
+    <title>Bear</title>
+  </head>
+  <body>
+    <header class="top-nav">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="/">Bear</a>
+        </div>
+        <nav class="nav-links">
+          <a href="/">Home</a>
+          <a href="/anime">Anime Library</a>
+          <a href="/">Weather Broadcast</a>
+          <a href="/">About Author</a>
+        </nav>
+      </div>
+    </header>
+  </body>
 </html>
