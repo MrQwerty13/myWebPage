@@ -93,3 +93,39 @@ ul {
 .anime-card:active {
   transform: scale(0.98);
 }
+.anime-card {
+  display: block;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+
+  background: #1f1f2b;
+  border-radius: 10px;
+
+  color: #c7ffd8;
+  text-decoration: none;
+  font-size: 16px;
+
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.anime-card:hover {
+  background: #2a2a3d;
+  border-color: #7aa2ff;
+  transform: translateX(6px);
+  color: #ffffff;
+}
+
+.anime-card:active {
+  transform: scale(0.98);
+}
+
+/* описание под названием */
+.anime-desc {
+  display: block;
+  font-size: 14px;
+  color: #b0e0d3;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+

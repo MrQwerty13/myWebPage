@@ -29,10 +29,11 @@
       {% for genre, titles in anime.items() %}
         <h3>{{ genre }} ☟</h3>
         <ul>
-          {% for title in titles %}
+          {% for item in titles %}
             <li>
               <a href="https://apple.com" target="_blank" class="anime-card">
-                {{ title }}
+                <strong>{{ item[0] }}</strong><br>
+                <span class="anime-desc">{{ item[1] }}</span>
               </a>
             </li>
           {% endfor %}
