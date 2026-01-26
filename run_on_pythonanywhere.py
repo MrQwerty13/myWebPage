@@ -35,9 +35,3 @@ def show_anime():
 @app.route('/author')
 def show_author():
     return f.render_template("author.html")
-
-def main():
-    app.run(host="0.0.0.0", port=8000, debug=True)
-
-if __name__ == '__main__':
-    main()
