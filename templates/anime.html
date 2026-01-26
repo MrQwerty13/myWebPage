@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Bear's Anime</title>
   </head>
 
   <body>
-    <h1 title="This is the title of the page" style="text-align: center; color: grey">
+
+    <hr>
+
+    <h1 title="Bear's Anime">
       Bear's Anime
     </h1>
 
     <hr>
 
-    <h2 style="text-align: center; color: grey">
+    <h2 title="Awwww, hottie">
       My list of anime:
     </h2>
 
-    <p>
-      {% types[0] %}
-    </p>
+    {% for genre, titles in anime.items() %}
+      <h3 title="It is the best ganre">{{ genre }}  ☟</h3>
+      <ul>
+        {% for title in titles %}
+          <li title="I love it!">⁍ {{ title }}</li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
   </body>
 </html>

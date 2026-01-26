@@ -1,0 +1,42 @@
+body {
+    font-family: "Comic Sans MS", sans-serif;
+    text-align: center;
+    background: #111;
+
+    hr {
+        height: 10px;
+        background-color: #999fff;
+    }
+
+    h1 {
+      font-size: 50px;
+      text-align: center;
+      color: #74ff82;
+      title: inherit
+    }
+
+    h2 {
+      font-family: "Comic Sans MS", sans-serif;
+      text-align: left;
+      color: #5d5fff;
+      title: inherit
+    }
+
+    h3 {
+        font-family: "Comic Sans MS", sans-serif;
+        text-align: left;
+        color: #ff8eb1;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    li {
+        font-family: "Comic Sans MS", sans-serif;
+        text-align: left;
+        color: #00BBAA;
+    }
+}
+
+
