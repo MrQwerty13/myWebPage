@@ -26,19 +26,20 @@
     <h2>My list of anime:</h2>
 
     <section class="anime">
-      {% for genre, titles in anime.items() %}
-        <h3>{{ genre }} ☟</h3>
-        <ul>
-          {% for item in titles %}
-            <li>
-              <a href="{{ item.link }}" target="_blank" class="anime-card">
-                <strong>{{ item.title }}</strong><br>
-                <span class="anime-desc">{{ item.description }}</span>
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      {% endfor %}
+        {% for genre, titles in anime.items() %}
+            <h3>{{ genre }} ☟</h3>
+            <ul>
+                {% for item in titles %}
+                    <li>
+                        <a href="{{ item[2] }}" target="_blank" class="anime-card">
+                            <strong>{{ item[0] }}</strong><br>
+                            <span class="anime-desc">{{ item[1] }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+
     </section>
   </main>
 </body>
