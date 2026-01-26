@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styleHome.css') }}">
-    <title>Bear</title>
-  </head>
-  <body>
-    <header class="top-nav">
-      <div class="nav-container">
-        <div class="nav-logo">
-          <a href="/">Bear</a>
-        </div>
-        <nav class="nav-links">
-          <a href="/">Home</a>
-          <a href="/anime">Anime Library</a>
-          <a href="/">Weather Broadcast</a>
-          <a href="/">About Author</a>
-        </nav>
+<head>
+  <meta charset="UTF-8">
+  <title>Bear's Anime - Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styleAnime.css') }}">
+</head>
+
+<body>
+  <!-- ===== NAVIGATION BAR ===== -->
+  <header class="top-nav">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="/">Bear's Anime</a>
       </div>
-    </header>
-  </body>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/anime">Anime Library</a>
+        <a href="/about">About Author</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="library">
+    <h2>Welcome to Bear's Anime!</h2>
+    <section class="intro">
+      <p>
+        Bear's Anime is your cozy corner to explore and track your favorite anime series.
+        Discover anime by genre, read short descriptions, and click through to learn more.
+        This site combines a personalized anime library with a friendly and simple interface,
+        designed for fans who love to organize, browse, and enjoy their anime collection.
+      </p>
+
+      <p>
+        Whether you're here to relive classics or discover new hits, Bear's Anime is your guide
+        to the world of anime, all in one convenient place. Start exploring your next favorite
+        series today!
+      </p>
+    </section>
+  </main>
+</body>
 </html>
