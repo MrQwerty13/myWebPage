@@ -34,7 +34,9 @@ def show_anime():
     anime_dict = get_data()
     return f.render_template("anime.html", anime=anime_dict)
 
-
+@app.route('/author')
+def show_author():
+    return f.render_template("author.html")
 
 def main():
     app.run(debug=True)
