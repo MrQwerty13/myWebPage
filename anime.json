@@ -7,6 +7,14 @@
     {
       "title": "Fly me to the Moon",
       "description": "A young man falls in love at first sight and marries a mysterious girl, despite knowing almost nothing about her. Filled with cute, funny, and heartwarming moments of everyday life."
+    },
+    {
+      "title": "Re:Zero",
+      "description": "Subaru Natsuki is transported to another world where he discovers he has the power to return from death, reliving moments to change outcomes. Romance, drama, and suspense are central to his journey."
+    },
+    {
+      "title": "The Girl from the Era of Tai-sei",
+      "description": "A historical romantic tale about a young woman navigating the trials of love and society during the Tai-sei period. Filled with heartfelt moments and dramatic twists."
     }
   ],
   "ISEKAI": [
@@ -17,6 +25,40 @@
     {
       "title": "About how I became a slime",
       "description": "The main character dies and is reincarnated as a slime in a fantasy world, gradually gaining powers and building his own kingdom. A fun blend of humor, action, and world-building."
+    },
+    {
+      "title": "The World's Most Dangerous Assassin Reincarnated as an Aristocrat",
+      "description": "A highly skilled assassin dies and is reborn as a noble in a fantasy world. He must adapt his deadly skills to aristocratic life while facing new challenges and intrigue."
+    }
+  ],
+  "ACTION": [
+    {
+      "title": "Attack on Titan",
+      "description": "Humanity fights for survival against giant humanoid Titans. Epic battles, political intrigue, and intense drama define this action-packed series."
+    },
+    {
+      "title": "Demon Slayer",
+      "description": "Tanjiro Kamado becomes a demon slayer to save his sister and avenge his family. Stunning fight scenes, emotional depth, and powerful bonds drive the story."
+    },
+    {
+      "title": "Sword Art Online",
+      "description": "Players become trapped in a virtual reality MMORPG and must fight to survive. Adventure, romance, and high-stakes battles create an immersive experience."
+    }
+  ],
+  "MYSTERY": [
+    {
+      "title": "Death Note",
+      "description": "Light Yagami finds a notebook that kills anyone whose name is written in it. A thrilling battle of wits between genius minds unfolds."
+    },
+    {
+      "title": "Detective Already Dead",
+      "description": "A young detective teams up with a legendary deceased investigator to solve mysterious cases. Suspense, intrigue, and clever deductions fill the story."
+    }
+  ],
+  "FANTASY": [
+    {
+      "title": "My Unique Pick: Made in Abyss",
+      "description": "A young girl descends into a mysterious, dangerous abyss to find her mother, discovering strange creatures and ancient relics. Emotional depth, adventure, and stunning world-building."
     }
   ]
 }
