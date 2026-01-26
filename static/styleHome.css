@@ -1,0 +1,27 @@
+body {
+    font-family: "American Typewriter", sans-serif;
+    text-align: center;
+    background: #111;
+    hr {
+        height: 10px;
+        background-color: #999fff;
+    }
+    h1 {
+      font-size: 50px;
+      text-align: center;
+      color: #74ff82;
+    }
+    h2 {
+      text-align: left;
+      color: #5d5fff;
+    }
+    h3 {
+        text-align: left;
+        color: #ff8eb1;
+    }
+    a {
+        font-family: "Comic Sans MS", sans-serif;
+        text-decoration: none;
+        color: #ff8eb1;
+    }
+}
