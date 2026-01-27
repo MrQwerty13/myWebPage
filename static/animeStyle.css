@@ -1,0 +1,139 @@
+/* ===== ОБЩИЕ СТИЛИ ===== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f4f0;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== НАВИГАЦИЯ ===== */
+.top-nav {
+  background-color: #ff6f61;
+  padding: 15px 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.nav-logo a {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  font-weight: 500;
+  color: white;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffd1c1;
+}
+
+/* ===== ГЛАВНАЯ БИБЛИОТЕКА ===== */
+.library {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.library h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ff3b2f;
+}
+
+/* ===== ЖАНРЫ ===== */
+.anime-genre-list h3 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #ff6f61;
+  font-size: 1.4rem;
+  border-bottom: 2px solid #ff6f61;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* ===== СПИСОК АНИМЕ (GRID) ===== */
+.anime-genre-list ul {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px; /* Расстояние между карточками */
+}
+
+/* ===== КАРТОЧКИ АНИМЕ ===== */
+.anime-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: justify; /* Выравнивание текста */
+  transition: transform 0.2s, box-shadow 0.2s;
+  opacity: 0; /* Для fade-in */
+  transform: translateY(20px);
+  height: 100%; /* растягивается по высоте родителя (grid) */
+  overflow: hidden;
+}
+
+.anime-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.anime-card strong {
+  font-size: 1.1rem;
+  color: #ff3b2f;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.anime-desc {
+  flex-grow: 1;
+  font-size: 0.95rem;
+  color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== FADE-IN ===== */
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease-out;
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 900px) {
+  .anime-genre-list ul {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .anime-genre-list ul {
+    grid-template-columns: 1fr;
+  }
+}

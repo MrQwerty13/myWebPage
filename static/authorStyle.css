@@ -1,0 +1,96 @@
+/* ===== ОБЩИЕ СТИЛИ ===== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f4f0;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #ff6f61;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #ff3b2f;
+}
+
+/* ===== НАВИГАЦИЯ ===== */
+.top-nav {
+  background-color: #ff6f61;
+  padding: 15px 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.nav-logo a {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  font-weight: 500;
+  color: white;
+}
+
+.nav-links a:hover {
+  color: #ffd1c1;
+}
+
+/* ===== ГЛАВНАЯ СЕКЦИЯ ===== */
+.library {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.library h2 {
+  text-align: center;
+  color: #ff3b2f;
+  margin-bottom: 30px;
+}
+
+/* ===== ИНФОРМАЦИЯ ОБ АВТОРЕ ===== */
+.author-info {
+  background-color: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  line-height: 1.7;
+  text-align: justify; /* выравнивание текста по ширине */
+  opacity: 0; /* для fade-in */
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.author-info.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.author-info p {
+  margin-bottom: 15px;
+}
+
+.author-info strong {
+  color: #ff6f61;
+}
+
+.author-info a {
+  word-break: break-all;
+}

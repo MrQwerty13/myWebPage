@@ -1,0 +1,57 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f4f0;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+a { text-decoration: none; color: #ff6f61; transition: color 0.3s; }
+a:hover { color: #ff3b2f; }
+
+.top-nav {
+  background-color: #ff6f61;
+  padding: 15px 0;
+  position: sticky; top: 0; z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.nav-logo a { font-size: 1.6rem; font-weight: bold; color: white; }
+.nav-links a { margin-left: 20px; font-weight: 500; color: white; }
+.nav-links a:hover { color: #ffd1c1; }
+
+.library { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+.library h2 { text-align: center; color: #ff3b2f; margin-bottom: 30px; }
+
+.feedback-section {
+  background-color: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  line-height: 1.7;
+  text-align: justify;
+  opacity: 0; transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+.feedback-section.visible { opacity: 1; transform: translateY(0); }
+
+.feedback-form { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+.feedback-form label { font-weight: 600; color: #ff6f61; }
+.feedback-form input, .feedback-form textarea {
+  padding: 10px 12px; border: 1px solid #ddd; border-radius: 8px;
+  font-size: 1rem; width: 100%; box-sizing: border-box; resize: vertical;
+  transition: border-color 0.3s;
+}
+.feedback-form input:focus, .feedback-form textarea:focus { border-color: #ff3b2f; outline: none; }
+
+.feedback-form button {
+  padding: 12px; background-color: #ff6f61; border: none; border-radius: 10px;
+  color: white; font-weight: bold; cursor: pointer; transition: background-color 0.3s;
+}
+.feedback-form button:hover { background-color: #ff3b2f; }
+
+.feedback-response { margin-top: 15px; font-weight: bold; text-align: center; opacity: 0; transition: opacity 0.5s; }
+.feedback-response.visible { opacity: 1; }
+
+@media (max-width: 600px) { .library { padding: 0 15px; } }

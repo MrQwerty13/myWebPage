@@ -5,8 +5,10 @@
   <title>Bear's Anime — Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="{{ url_for('static', filename='styleAnime.css') }}">
+  <!-- Подключаем отдельный CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='homeStyle.css') }}">
 </head>
+
 
 <body>
 
@@ -18,8 +20,9 @@
       </div>
       <nav class="nav-links">
         <a href="/">Дом</a>
-        <a href="/anime">Библиотека</a>
+        <a href="/anime">Библиотека аниме</a>
         <a href="/author">Об авторе</a>
+        <a href="/feedback">Обратная связь</a>
       </nav>
     </div>
   </header>

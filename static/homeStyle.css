@@ -1,0 +1,119 @@
+/* ===== ОБЩИЕ СТИЛИ ===== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f4f0;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== НАВИГАЦИЯ ===== */
+.top-nav {
+  background-color: #ff6f61;
+  padding: 15px 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.nav-logo a {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  font-weight: 500;
+  color: white;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffd1c1;
+}
+
+/* ===== MAIN INTRO ===== */
+.library {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* ===== RANDOM ANIME SECTION ===== */
+.random-anime {
+  background-color: #fff5f2;
+  padding: 30px 20px;
+  border-radius: 15px;
+  max-width: 1100px;
+  margin: 40px auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.random-anime h2 {
+  margin-bottom: 20px;
+  color: #ff6f61;
+  text-align: center;
+}
+
+.anime-card {
+  display: block;
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.anime-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.anime-card h3 {
+  margin: 0 0 10px 0;
+  color: #ff3b2f;
+}
+
+.anime-desc {
+  display: block;
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+/* ===== КАРТОЧКА СЛУЧАЙНОГО ТАЙТЛА ===== */
+.anime-card img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
