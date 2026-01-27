@@ -1,42 +1,54 @@
 import os
 import json
 import random
-from flask import Flask, render_template
+import flask as f
 
-app = Flask(__name__)
+app = f.Flask(__name__)
 
-# Путь к файлу anime.json
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def get_data():
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
     with open(os.path.join(BASE_DIR, "static", "anime.json"), encoding="utf-8") as f_json:
         data = json.load(f_json)
+
     anime_dict = {
-        genre: [[item["title"], item["description"], item["link"]] for item in items]
+        genre: [
+            [item["title"], item["description"], item["link"]]
+            for item in items
+        ]
         for genre, items in data.items()
     }
+
     return anime_dict
+
 
 def get_random_anime():
     anime_dict = get_data()
+
     all_anime = []
     for items in anime_dict.values():
         all_anime.extend(items)
+
     return random.choice(all_anime)
+
 
 @app.route("/")
 def show_home():
     random_anime = get_random_anime()
-    return render_template("home.html", anime=random_anime)
+    return f.render_template("home.html", anime=random_anime)
+
 
 @app.route("/anime")
 def show_anime():
     anime_dict = get_data()
-    return render_template("anime.html", anime=anime_dict)
+    return f.render_template("anime.html", anime=anime_dict)
+
 
 @app.route("/author")
 def show_author():
-    return render_template("author.html")
+    return f.render_template("author.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
