@@ -5,39 +5,8 @@ import random
 
 app = Flask(__name__)
 
-FEEDBACK_FILE = os.path.join("static", "feedback.json")  # файл для хранения сообщений
 
-# ===== FEEDBACK PAGE =====
-@app.route("/feedback", methods=["GET", "POST"])
-def feedback():
-    if request.method == "GET":
-        return render_template("feedback.html")
-
-    # POST - добавление нового сообщения
-    data = request.get_json()
-    username = data.get("username")
-    message = data.get("message")
-
-    if not (username and message):
-        return jsonify({"status": "error", "message": "Заполните все поля"}), 400
-
-    # Загружаем существующие данные
-    if os.path.exists(FEEDBACK_FILE):
-        with open(FEEDBACK_FILE, "r", encoding="utf-8") as f:
-            feedback_list = json.load(f)
-    else:
-        feedback_list = []
-
-    # Добавляем новое сообщение
-    feedback_list.append({"username": username, "message": message})
-
-    # Сохраняем обратно
-    with open(FEEDBACK_FILE, "w", encoding="utf-8") as f:
-        json.dump(feedback_list, f, ensure_ascii=False, indent=2)
-
-    return jsonify({"status": "ok"}), 200
-
-
+ 
 # ===== ANIME DATA FUNCTIONS =====
 def get_data():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
