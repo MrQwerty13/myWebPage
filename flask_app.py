@@ -48,6 +48,14 @@ def show_author():
     return render_template("author.html")
 
 
+@app.route("/sex")
+def show_sex():
+	return render_tamplate("sex.html")
+
+
+
+
 if __name__ == "__main__":
     app.run(host="192.168.1.106", port=5000, debug=True)
+
 
