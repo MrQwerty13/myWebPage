@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Red Bull Can Collection</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+
+body{
+
+    font-family:'Poppins', sans-serif;
+    margin:0;
+    background:#f5f5f5;
+    color:#222;
+
+}
+
+
+.container{
+
+    max-width:1200px;
+    margin:auto;
+    padding:30px;
+
+}
+
+
+header{
+
+    text-align:center;
+    margin-bottom:40px;
+
+}
+
+
+header h1{
+
+    font-size:40px;
+
+}
+
+
+header p{
+
+    color:#777;
+
+}
+
+
+/* ADD BUTTON */
+
+.add-btn{
+
+    position:fixed;
+
+    right:35px;
+
+    bottom:35px;
+
+    width:70px;
+
+    height:70px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#007BFF;
+
+    color:white;
+
+    font-size:32px;
+
+    cursor:pointer;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.4);
+
+    transition:.2s;
+
+}
+
+
+.add-btn:hover{
+
+    transform:scale(1.1);
+
+}
+
+
+
+/* GROUPS */
+
+
+.group{
+
+    margin-bottom:40px;
+
+}
+
+
+.group-title h2{
+
+    margin-bottom:20px;
+
+}
+
+
+/* CARDS */
+
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+
+    gap:20px;
+
+}
+
+
+.card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+
+    transition:.2s;
+
+}
+
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+
+.card h3{
+
+    margin-top:0;
+
+    font-size:22px;
+
+}
+
+
+.row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin:8px 0;
+
+}
+
+
+.label{
+
+    color:#777;
+
+}
+
+
+.value{
+
+    font-weight:600;
+
+}
+
+
+.description{
+
+    margin-top:15px;
+
+    color:#555;
+
+}
+
+
+.rating{
+
+    display:inline-block;
+
+    margin-top:15px;
+
+    background:#ffe066;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+}
+
+
+.author{
+
+    margin-top:15px;
+
+    color:#555;
+
+}
+
+
+/* MODAL */
+
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.6);
+
+    animation:fade .2s;
+
+}
+
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+
+
+.modal-content{
+
+    width:450px;
+
+    max-width:90%;
+
+    background:white;
+
+    color:black;
+
+    border-radius:15px;
+
+    padding:30px;
+
+    margin:80px auto;
+
+}
+
+
+
+.modal input,
+.modal select,
+.modal textarea{
+
+    width:100%;
+
+    padding:12px;
+
+    margin:10px 0;
+
+    border-radius:8px;
+
+    border:1px solid #ccc;
+
+    font-family:inherit;
+
+}
+
+
+
+.modal button[type="submit"]{
+
+    width:100%;
+
+    padding:14px;
+
+    background:#0066ff;
+
+    color:white;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+
+
+.modal button[type="submit"]:hover{
+
+    background:#0052cc;
+
+}
+
+
+
+.close{
+
+    float:right;
+
+    background:none;
+
+    border:none;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    color:#333;
+
+}
+
+
+footer{
+
+    text-align:center;
+
+    margin-top:50px;
+
+    color:#777;
+
+}
+
+
+</style>
+
+
+
+<script>
+
+
+function openModal(){
+
+    document.getElementById("addModal").style.display="block";
+
+}
+
+
+
+function closeModal(){
+
+    document.getElementById("addModal").style.display="none";
+
+}
+
+
+
+window.onclick=function(event){
+
+    let modal=document.getElementById("addModal");
+
+
+    if(event.target === modal){
+
+        modal.style.display="none";
+
+    }
+
+}
+
+
+
+</script>
+
+
+</head>
+
+
+
+<body>
+
+
+<div class="container">
+
+
+<header>
+
+<h1>🥤 Red Bull Collection</h1>
+
+<p>Sorted by Taste • Highest Rated First</p>
+
+</header>
+
+
+
+{% for taste, cans in groups.items() %}
+
+
+<section class="group">
+
+
+<div class="group-title">
+
+<h2>{{ taste }}</h2>
+
+</div>
+
+
+
+<div class="cards">
+
+
+{% for can in cans %}
+
+
+<div class="card">
+
+
+<h3>{{ can.name }}</h3>
+
+
+
+<div class="row">
+
+<span class="label">
+Volume
+</span>
+
+<span class="value">
+{{ can.volume.value }} L
+</span>
+
+</div>
+
+
+
+<div class="row">
+
+<span class="label">
+Assessment
+</span>
+
+<span class="value">
+{{ can.assessment }}/10
+</span>
+
+</div>
+
+
+
+<div class="description">
+
+{{ can.description }}
+
+</div>
+
+
+
+<span class="rating">
+
+⭐ {{ can.assessment }}
+
+</span>
+
+
+
+<div class="author">
+
+👤 {{ can.author.value }}
+
+</div>
+
+
+
+</div>
+
+
+{% endfor %}
+
+
+</div>
+
+
+</section>
+
+
+{% endfor %}
+
+
+
+<!-- ADD BUTTON -->
+
+<button class="add-btn" onclick="openModal()">
+
++
+
+</button>
+
+
+
+
+
+<!-- MODAL -->
+
+
+<div id="addModal" class="modal">
+
+
+<div class="modal-content">
+
+
+<button class="close" onclick="closeModal()">
+
+×
+
+</button>
+
+
+
+<h2>Add a Can</h2>
+
+
+
+<form action="/add" method="POST">
+
+
+<input
+type="text"
+name="name"
+placeholder="Can name"
+required
+>
+
+
+
+<select name="volume">
+
+<option value="0.25">
+250 ml
+</option>
+
+<option value="0.355">
+355 ml
+</option>
+
+<option value="0.473">
+473 ml
+</option>
+
+</select>
+
+
+
+<select name="taste">
+
+
+<option value="Classic">
+Classic
+</option>
+
+
+<option value="Sugar Free">
+Sugar Free
+</option>
+
+
+<option value="Peach Edition(White Peach)">
+Peach Edition
+</option>
+
+
+<option value="Red Edition(Watermelon)">
+Red Edition
+</option>
+
+
+<option value="Blue Edition(Blueberry)">
+Blue Edition
+</option>
+
+
+<option value="Sea Blue Edition(Irgi)">
+Sea Blue Edition
+</option>
+
+
+<option value="Tropical Edition(Tropical Fruits)">
+Tropical Edition
+</option>
+
+
+<option value="Summer Edition(Lime Sudachi)">
+Summer Edition
+</option>
+
+
+</select>
+
+
+
+
+<input
+
+type="number"
+
+name="assessment"
+
+min="0"
+
+max="10"
+
+step="0.1"
+
+placeholder="Assessment"
+
+required
+
+>
+
+
+
+
+<textarea
+
+name="description"
+
+placeholder="Description"
+
+rows="4"
+
+></textarea>
+
+
+
+
+
+<select name="author">
+
+
+<option value="MrQwerty13">
+
+MrQwerty13
+
+</option>
+
+
+<option value="MilkyWay">
+
+MilkyWay
+
+</option>
+
+
+</select>
+
+
+
+
+
+<button type="submit">
+
+Save
+
+</button>
+
+
+
+</form>
+
+
+</div>
+
+
+</div>
+
+
+
+<footer>
+
+Red Bull Collection • Flask + Python
+
+</footer>
+
+
+
+</div>
+
+
+</body>
+
+
+</html>

@@ -27,7 +27,8 @@ class CanStorage:
         }
 
         with self.file.open("a", encoding="utf-8") as f:
-            f.write(json.dumps(data, ensure_ascii=False) + "\n")
+            f.write(json.dumps(data, ensure_ascii=False))
+            f.write("\n\n")
 
     def get_all(self) -> list[CanClass]:
         """Returns all CanClass objects from the file."""

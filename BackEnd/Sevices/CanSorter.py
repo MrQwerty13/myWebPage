@@ -42,3 +42,4 @@ class CanSorter:
         )
 
     def save(self, can: CanClass) -> None:
+        pass
