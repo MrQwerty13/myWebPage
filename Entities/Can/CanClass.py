@@ -1,5 +1,5 @@
-from Enums.CanEnumVolume import CanEnumVolume
-from Enums.CanEnumTaste import CanEnumTaste
+from Entities.Can.Enums.CanEnumVolume import CanEnumVolume
+from Entities.Can.Enums.CanEnumTaste import CanEnumTaste
 
 from Entities.Authors.AuthorEnum import AuthorEnum
 
