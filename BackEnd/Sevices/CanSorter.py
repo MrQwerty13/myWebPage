@@ -40,3 +40,5 @@ class CanSorter:
             key=lambda can: can.author.value,
             reverse=reverse
         )
+
+    def save(self, can: CanClass) -> None:
