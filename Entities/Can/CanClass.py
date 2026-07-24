@@ -8,12 +8,12 @@ from Entities.Authors.AuthorEnum import AuthorEnum
 class CanClass:
     def __init__(
             self,
-            name: str,
-            volume: CanEnumVolume,
-            taste: CanEnumTaste,
-            assessment: float,
-            description: str,
-            author: AuthorEnum
+            name: str = "Example Can",
+            volume: CanEnumVolume = CanEnumVolume.small,
+            taste: CanEnumTaste = CanEnumTaste.Classic,
+            assessment: float = 8.5,
+            description: str = "The classic but boring",
+            author: AuthorEnum = AuthorEnum.Mikhail
     ) -> None:
         self.name = name
         self.volume = volume
