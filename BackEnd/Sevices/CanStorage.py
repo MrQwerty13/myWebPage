@@ -1,10 +1,10 @@
 import json
 from pathlib import Path
 
-from Entities.Can.CanClass import CanClass
-from Entities.Can.Enums.CanEnumVolume import CanEnumVolume
-from Entities.Can.Enums.CanEnumTaste import CanEnumTaste
-from Entities.Authors.AuthorEnum import AuthorEnum
+from BackEnd.Entities.Can.CanClass import CanClass
+from BackEnd.Entities.Can.Enums.CanEnumVolume import CanEnumVolume
+from BackEnd.Entities.Can.Enums.CanEnumTaste import CanEnumTaste
+from BackEnd.Entities.Authors.AuthorEnum import AuthorEnum
 
 
 class CanStorage:
@@ -55,7 +55,8 @@ class CanStorage:
         return cans
 
     def clear(self) -> None:
-        """Clears the file."""
+        with open(self.file, "w") as f:
+            f.write("")
 
         self.file.write_text("", encoding="utf-8")
 

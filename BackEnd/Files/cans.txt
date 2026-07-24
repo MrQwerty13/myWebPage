@@ -1,0 +1,3 @@
+{"name": "Classic Small Can", "volume": 0.25, "taste": "Classic", "assessment": 8.5, "description": "The immortal classic", "author": "MrQwerty13"}
+{"name": "Classic Medium Can", "volume": 0.355, "taste": "Classic", "assessment": 8.0, "description": "Almost like great but not best among classic", "author": "MrQwerty13"}
+{"name": "Classic Large Can", "volume": 0.473, "taste": "Classic", "assessment": 8.5, "description": "Best of the best for getting energy", "author": "MrQwerty13"}
