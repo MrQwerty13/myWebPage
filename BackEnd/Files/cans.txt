@@ -1,2 +1,2 @@
-{"name": "The biggest and tastiest", "volume": 0.25, "taste": "Classic", "assessment": 9.8, "description": "The best red bull in my opinion", "author": "MrQwerty13"}
+{"name": "The Original", "volume": 0.25, "taste": "Classic", "assessment": 8.5, "description": "The original Red Bull Drink. Isn't it well-tasted?", "author": "MrQwerty13"}
 
