@@ -1,2 +1,0 @@
-{"name": "Diana's fav", "brand": "Milky's", "volume": 0.33, "taste": "Classic", "assessment": 9.9, "description": "My Fav drink 🥤", "author": "Diana", "counter": 28}
-
