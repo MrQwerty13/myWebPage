@@ -1,4 +1,0 @@
-{"name": "The Classic", "volume": 0.25, "taste": "Classic", "assessment": 7.6, "description": "The immortal classic", "author": "MrQwerty13"}
-
-{"name": "The fav of MrQwerty13", "volume": 0.473, "taste": "Peach Edition(White Peach)", "assessment": 9.5, "description": "My favourite can ever", "author": "MrQwerty13"}
-

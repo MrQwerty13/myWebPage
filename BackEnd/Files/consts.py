@@ -1,1 +1,1 @@
-FILE_PATH = "/home/drink/myWebPage/BackEnd/Files/cans.txt"
+FILE_PATH = "BackEnd/Files/drinks.txt"
