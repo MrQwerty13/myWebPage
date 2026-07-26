@@ -5,10 +5,10 @@ from BackEnd.Services.DrinkKeeper import DrinkKeeper
 from BackEnd.Entities.Drinks.DrinkClass import DrinkClass
 from BackEnd.Entities.Drinks.BrandEnum import BrandEnum
 from BackEnd.Entities.Authors.AuthorEnum import AuthorEnum
-from BackEnd.Files.consts import FILE_PATH
+from BackEnd.Files.consts import MAC_FILE_PATH
 
 app = Flask(__name__)
-keeper = DrinkKeeper(FILE_PATH)
+keeper = DrinkKeeper(MAC_FILE_PATH)
 
 # Volumes and tastes by brand (for the add form)
 BRAND_VOLUMES = {
@@ -36,28 +36,28 @@ brand_data = {
 # Author info for the authors page
 AUTHOR_INFO = {
     "Diana": {
-        "role": "Co-founder & Taste Expert",
-        "emoji": "🌸",
+        "role": "Co-founder & Beauty and Design Expert",
+        "emoji": "💝",
         "color": "#ff00a2",
-        "bio_en": "Diana is the heart of Drink Tracker. She discovers new limited editions and rates them with surgical precision. Her favourite is anything peach-flavoured.",
-        "bio_ru": "Диана — душа Drink Tracker. Она находит новые лимитированные выпуски и оценивает их с хирургической точностью. Её фаворит — всё со вкусом персика.",
-        "favorite": "Red Bull Peach Edition",
+        "bio_en": "Diana is real Milky's fun. She loves all beautiful and cute. Also she is Mikhail's wife",
+        "bio_ru": "Диана настоящий фанат Milky's. Она любит всё красивое и милое. Ещё она жена Михаила",
+        "favorite": "Milky's Classic",
     },
     "Mikhail": {
-        "role": "Founder & Full-stack Developer",
-        "emoji": "⚡",
+        "role": "Founder & DevSecOps-Engineer",
+        "emoji": "💻",
         "color": "#066923",
-        "bio_en": "Mikhail created Drink Tracker to never forget which energy drink he already tried. He loves clean code, dark themes and strong coffee (or Monster).",
-        "bio_ru": "Михаил создал Drink Tracker, чтобы никогда не забывать, какой энергетик уже пробовал. Любит чистый код, тёмные темы и крепкий кофе (или Monster).",
-        "favorite": "Monster Classic",
+        "bio_en": "Genius - yes, it's Mikhail's second name. He loves Formula 1 and IT but his biggest love is Diana",
+        "bio_ru": "Гений - да, это второе имя Михаила. Он любит Формулу 1 и IT, но больше всего он любит Диану",
+        "favorite": "Red Bull Peach Edition",
     },
     "Hamid": {
-        "role": "Community Manager & Reviewer",
-        "emoji": "🔥",
-        "color": "#409dcb",
-        "bio_en": "Hamid brings the community vibe. He writes the funniest descriptions and always finds the rarest cans. Currently hunting for every Milky’s flavour.",
-        "bio_ru": "Хамид создаёт атмосферу сообщества. Он пишет самые смешные описания и всегда находит самые редкие банки. Сейчас охотится за всеми вкусами Milky’s.",
-        "favorite": "Milky's Grape",
+        "role": "Halal checker & Engineer-Constructor",
+        "emoji": "🛩️",
+        "color": "#2097d2",
+        "bio_en": "Halal boy or Hamid. He is islamic and bombs everywhere, also loves Windows",
+        "bio_ru": "Халяльный мальчик или Хамид. Он мусульманин и везде взрывается, также любит Windows",
+        "favorite": "Monster Classic",
     },
 }
 
@@ -173,4 +173,4 @@ def increment_drink():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True, host="0.0.0.0", port=5000)
