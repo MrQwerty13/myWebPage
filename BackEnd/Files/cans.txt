@@ -1,2 +1,3 @@
-{"name": "The Original", "volume": 0.25, "taste": "Classic", "assessment": 8.5, "description": "The original Red Bull Drink. Isn't it well-tasted?", "author": "MrQwerty13"}
+{"name": "The Classic ", "volume": 0.25, "taste": "Classic", "assessment": 7.6, "description": "The immortal classic...", "author": "MrQwerty13"}
+{"name": "MrQwerty13's fav ", "volume": 0.473, "taste": "Peach Edition(White Peach)", "assessment": 9.5, "description": "The can one love, or the best!", "author": "MrQwerty13"}
 

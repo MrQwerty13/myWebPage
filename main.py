@@ -9,15 +9,15 @@ from BackEnd.Entities.Can.Enums.CanEnumTaste import CanEnumTaste
 
 from BackEnd.Entities.Authors.AuthorEnum import AuthorEnum
 
-from BackEnd.Files.consts import FILE_PATH
+from BackEnd.Files.consts import *
 
 app = Flask(__name__)
 
 keeper = TheCanKeeper(FILE_PATH)
 
 
-@app.route("/")
-def index():
+@app.route("/rb")
+def rb_cans():
     cans = keeper.get_all()
 
     groups = defaultdict(list)
@@ -36,7 +36,7 @@ def index():
             reverse=True
         )
 
-    return render_template("index.html", groups=groups)
+    return render_template("red_bull_cans.html", groups=groups)
 
 from flask import request, redirect
 
@@ -54,9 +54,9 @@ def add_can():
 
     keeper.add(can)
 
-    return redirect("/")
+    return redirect("/rb")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=6767, debug=True)
 
 
