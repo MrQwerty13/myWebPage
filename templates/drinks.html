@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,137 +8,245 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='drinks.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='common.css') }}">
 </head>
 <body>
-<div class="container">
-  <header>
-    <h1>🥤 Drink Tracker</h1>
-    <p>Track your favorite drinks!</p>
-  </header>
-
-  {% for brand, drinks in groups.items() %}
-  <section class="group" data-brand="{{ brand }}">
-    <div class="group-title">
-      <h2>{{ brand }}</h2>
+  <!-- Top controls -->
+  <div class="top-controls">
+    <div class="lang-switch">
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="ru" onclick="setLang('ru')">RU</button>
     </div>
-    <div class="cards">
-      {% for drink in drinks %}
-      <div class="card">
-        <h3>{{ drink.name }}</h3>
-        <div class="row">
-          <span class="label">Brand</span>
-          <span class="value">{{ drink.brand.value }}</span>
-        </div>
-        <div class="row">
-          <span class="label">Volume</span>
-          <span class="value">{{ drink.volume }} L</span>
-        </div>
-        <div class="row">
-          <span class="label">Taste</span>
-          <span class="value">{{ drink.taste }}</span>
-        </div>
-        <div class="description">{{ drink.description }}</div>
-
-        <!-- Рейтинг -->
-        <div class="rating-bar">
-          <div class="rating-fill" style="width: {{ (drink.assessment / 10 * 100) }}%;"></div>
-          <span class="rating-value">{{ drink.assessment }}</span>
-        </div>
-        <div class="rating-labels">
-          <span>0</span>
-          <span>10</span>
-        </div>
-
-        <!-- Счетчик популярности -->
-        <div class="counter">
-          <span class="counter-label">Popularity: </span>
-          <span class="counter-value">{{ drink.counter }}</span>
-        </div>
-
-        <!-- Кнопка +1 -->
-        <form action="/increment" method="POST" class="inline-form">
-          <input type="hidden" name="name" value="{{ drink.name }}">
-          <input type="hidden" name="brand" value="{{ drink.brand.value }}">
-          <input type="hidden" name="volume" value="{{ drink.volume }}">
-          <input type="hidden" name="taste" value="{{ drink.taste }}">
-          <input type="hidden" name="assessment" value="{{ drink.assessment }}">
-          <input type="hidden" name="description" value="{{ drink.description }}">
-          <input type="hidden" name="author" value="{{ drink.author.value }}">
-          <button type="submit" class="btn-increment">👍 +1</button>
-        </form>
-
-        <!-- Кнопка удаления -->
-        <form action="/delete" method="POST" class="inline-form" onsubmit="return confirmDelete();">
-          <input type="hidden" name="name" value="{{ drink.name }}">
-          <input type="hidden" name="brand" value="{{ drink.brand.value }}">
-          <input type="hidden" name="volume" value="{{ drink.volume }}">
-          <input type="hidden" name="taste" value="{{ drink.taste }}">
-          <input type="hidden" name="assessment" value="{{ drink.assessment }}">
-          <input type="hidden" name="description" value="{{ drink.description }}">
-          <input type="hidden" name="author" value="{{ drink.author.value }}">
-          <button type="submit" class="btn-delete">🗑️</button>
-        </form>
-
-        <div class="author">{{ drink.author.value }}</div>
-      </div>
-      {% endfor %}
-    </div>
-  </section>
-  {% endfor %}
-
-  <!-- Кнопка добавления -->
-  <button class="add-btn" onclick="openModal()">+</button>
-
-  <!-- Модальное окно -->
-  <div id="addModal" class="modal">
-    <div class="modal-content">
-      <button class="close" onclick="closeModal()">×</button>
-      <h2>Add a Drink</h2>
-      <form action="/add" method="POST" id="addForm">
-        <input type="text" name="name" placeholder="Drink name" required>
-
-        <select name="brand" id="brandSelect" required>
-          <option value="">Select Brand</option>
-          {% for brand in brands %}
-          <option value="{{ brand.value }}">{{ brand.value }}</option>
-          {% endfor %}
-        </select>
-
-        <select name="volume" id="volumeSelect" required>
-          <option value="">Select Volume</option>
-        </select>
-
-        <select name="taste" id="tasteSelect" required>
-          <option value="">Select Taste</option>
-        </select>
-
-        <input type="number" name="assessment" min="0" max="10" step="0.1" placeholder="Assessment" required>
-        <textarea name="description" placeholder="Description" rows="4"></textarea>
-
-        <select name="author" required>
-          <option value="">Select Author</option>
-          {% for author in authors %}
-          <option value="{{ author.value }}">{{ author.value }}</option>
-          {% endfor %}
-        </select>
-
-        <button type="submit">Save</button>
-      </form>
+    <div class="theme-switch">
+      <button class="theme-btn" data-theme="light" onclick="setTheme('light')" title="Light">☀️</button>
+      <button class="theme-btn" data-theme="dark" onclick="setTheme('dark')" title="Dark">🌙</button>
     </div>
   </div>
 
-  <footer>Drink Tracker • Flask + Python</footer>
-</div>
+  <div class="container">
+    <header>
+      <h1 data-i18n="drinks.title">🥤 Drink Tracker</h1>
+      <p data-i18n="drinks.subtitle">Track your favorite drinks!</p>
+    </header>
 
-<script>
-  // Передаём данные из Python в JS
-  const brandData = {{ brand_data|tojson|safe }};
-</script>
-<!-- в конце body, перед закрывающим </body> -->
-<script>
-  // Делаем данные глобально доступными
-  window.brandData = {{ brand_data|tojson|safe }};
-</script>
-<script src="{{ url_for('static', filename='drinks.js') }}"></script>
+    <!-- Sort controls -->
+    <div class="sort-bar">
+      <span class="sort-label" data-i18n="drinks.sort">Sort by:</span>
+      <div class="sort-buttons">
+        <a href="{{ url_for('drinks_view', sort='author') }}"
+           class="sort-btn {% if current_sort == 'author' %}active{% endif %}"
+           data-i18n="drinks.sort.author">Author</a>
+        <a href="{{ url_for('drinks_view', sort='brand') }}"
+           class="sort-btn {% if current_sort == 'brand' %}active{% endif %}"
+           data-i18n="drinks.sort.brand">Brand</a>
+        <a href="{{ url_for('drinks_view', sort='rating') }}"
+           class="sort-btn {% if current_sort == 'rating' %}active{% endif %}"
+           data-i18n="drinks.sort.rating">Rating</a>
+        <a href="{{ url_for('drinks_view', sort='popularity') }}"
+           class="sort-btn {% if current_sort == 'popularity' %}active{% endif %}"
+           data-i18n="drinks.sort.popularity">Popularity</a>
+        <a href="{{ url_for('drinks_view', sort='name') }}"
+           class="sort-btn {% if current_sort == 'name' %}active{% endif %}"
+           data-i18n="drinks.sort.name">Name</a>
+      </div>
+    </div>
+
+    {% if groups %}
+      {% for group_name, drinks in groups.items() %}
+      <section class="group" data-brand="{{ group_name }}">
+        <div class="group-title">
+          <h2>{{ group_name }}</h2>
+        </div>
+        <div class="cards">
+          {% for drink in drinks %}
+          <div class="card">
+            <h3>{{ drink.name }}</h3>
+            <div class="row">
+              <span class="label">Brand</span>
+              <span class="value">{{ drink.brand.value }}</span>
+            </div>
+            <div class="row">
+              <span class="label">Volume</span>
+              <span class="value">{{ drink.volume }} L</span>
+            </div>
+            <div class="row">
+              <span class="label">Taste</span>
+              <span class="value">{{ drink.taste }}</span>
+            </div>
+            {% if current_sort == 'author' %}
+            <div class="row">
+              <span class="label">Author</span>
+              <span class="value">{{ drink.author.value }}</span>
+            </div>
+            {% endif %}
+            <div class="description">{{ drink.description }}</div>
+
+            <div class="rating-bar">
+              <div class="rating-fill" style="width: {{ (drink.assessment / 10 * 100)|round(1) }}%;"></div>
+              <span class="rating-value">{{ drink.assessment }}</span>
+            </div>
+            <div class="rating-labels">
+              <span>0</span>
+              <span>10</span>
+            </div>
+
+            <div class="counter">
+              <span class="counter-label" data-i18n="drinks.popularity">Popularity: </span>
+              <span class="counter-value">{{ drink.counter }}</span>
+            </div>
+
+            <form action="/increment" method="POST" class="inline-form">
+              <input type="hidden" name="name" value="{{ drink.name }}">
+              <input type="hidden" name="brand" value="{{ drink.brand.value }}">
+              <input type="hidden" name="volume" value="{{ drink.volume }}">
+              <input type="hidden" name="taste" value="{{ drink.taste }}">
+              <input type="hidden" name="assessment" value="{{ drink.assessment }}">
+              <input type="hidden" name="description" value="{{ drink.description }}">
+              <input type="hidden" name="author" value="{{ drink.author.value }}">
+              <input type="hidden" name="return_sort" value="{{ current_sort }}">
+              <button type="submit" class="btn-increment">👍 +1</button>
+            </form>
+
+            <form action="/delete" method="POST" class="inline-form" onsubmit="return confirmDelete();">
+              <input type="hidden" name="name" value="{{ drink.name }}">
+              <input type="hidden" name="brand" value="{{ drink.brand.value }}">
+              <input type="hidden" name="volume" value="{{ drink.volume }}">
+              <input type="hidden" name="taste" value="{{ drink.taste }}">
+              <input type="hidden" name="assessment" value="{{ drink.assessment }}">
+              <input type="hidden" name="description" value="{{ drink.description }}">
+              <input type="hidden" name="author" value="{{ drink.author.value }}">
+              <input type="hidden" name="return_sort" value="{{ current_sort }}">
+              <button type="submit" class="btn-delete">🗑️</button>
+            </form>
+
+            {% if current_sort != 'author' %}
+            <div class="author">{{ drink.author.value }}</div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endfor %}
+    {% elif flat_list %}
+      <section class="group">
+        <div class="cards">
+          {% for drink in flat_list %}
+          <div class="card">
+            <h3>{{ drink.name }}</h3>
+            <div class="row">
+              <span class="label">Brand</span>
+              <span class="value">{{ drink.brand.value }}</span>
+            </div>
+            <div class="row">
+              <span class="label">Volume</span>
+              <span class="value">{{ drink.volume }} L</span>
+            </div>
+            <div class="row">
+              <span class="label">Taste</span>
+              <span class="value">{{ drink.taste }}</span>
+            </div>
+            <div class="row">
+              <span class="label">Author</span>
+              <span class="value">{{ drink.author.value }}</span>
+            </div>
+            <div class="description">{{ drink.description }}</div>
+
+            <div class="rating-bar">
+              <div class="rating-fill" style="width: {{ (drink.assessment / 10 * 100)|round(1) }}%;"></div>
+              <span class="rating-value">{{ drink.assessment }}</span>
+            </div>
+            <div class="rating-labels">
+              <span>0</span>
+              <span>10</span>
+            </div>
+
+            <div class="counter">
+              <span class="counter-label" data-i18n="drinks.popularity">Popularity: </span>
+              <span class="counter-value">{{ drink.counter }}</span>
+            </div>
+
+            <form action="/increment" method="POST" class="inline-form">
+              <input type="hidden" name="name" value="{{ drink.name }}">
+              <input type="hidden" name="brand" value="{{ drink.brand.value }}">
+              <input type="hidden" name="volume" value="{{ drink.volume }}">
+              <input type="hidden" name="taste" value="{{ drink.taste }}">
+              <input type="hidden" name="assessment" value="{{ drink.assessment }}">
+              <input type="hidden" name="description" value="{{ drink.description }}">
+              <input type="hidden" name="author" value="{{ drink.author.value }}">
+              <input type="hidden" name="return_sort" value="{{ current_sort }}">
+              <button type="submit" class="btn-increment">👍 +1</button>
+            </form>
+
+            <form action="/delete" method="POST" class="inline-form" onsubmit="return confirmDelete();">
+              <input type="hidden" name="name" value="{{ drink.name }}">
+              <input type="hidden" name="brand" value="{{ drink.brand.value }}">
+              <input type="hidden" name="volume" value="{{ drink.volume }}">
+              <input type="hidden" name="taste" value="{{ drink.taste }}">
+              <input type="hidden" name="assessment" value="{{ drink.assessment }}">
+              <input type="hidden" name="description" value="{{ drink.description }}">
+              <input type="hidden" name="author" value="{{ drink.author.value }}">
+              <input type="hidden" name="return_sort" value="{{ current_sort }}">
+              <button type="submit" class="btn-delete">🗑️</button>
+            </form>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+    {% else %}
+      <p class="empty-msg" data-i18n="drinks.empty">No drinks yet. Add the first one!</p>
+    {% endif %}
+
+    <!-- Floating add button -->
+    <button class="add-btn" onclick="openModal()">+</button>
+
+    <!-- Modal -->
+    <div id="addModal" class="modal">
+      <div class="modal-content">
+        <button class="close" onclick="closeModal()">×</button>
+        <h2 data-i18n="drinks.add">Add a Drink</h2>
+        <form action="/add" method="POST" id="addForm">
+          <input type="hidden" name="return_sort" value="{{ current_sort }}">
+          <input type="text" name="name" data-i18n="drinks.name" placeholder="Drink name" required>
+
+          <select name="brand" id="brandSelect" required>
+            <option value="" data-i18n="drinks.brand">Select Brand</option>
+            {% for brand in brands %}
+            <option value="{{ brand.value }}">{{ brand.value }}</option>
+            {% endfor %}
+          </select>
+
+          <select name="volume" id="volumeSelect" required>
+            <option value="" data-i18n="drinks.volume">Select Volume</option>
+          </select>
+
+          <select name="taste" id="tasteSelect" required>
+            <option value="" data-i18n="drinks.taste">Select Taste</option>
+          </select>
+
+          <input type="number" name="assessment" min="0" max="10" step="0.1" data-i18n="drinks.assessment" placeholder="Assessment" required>
+          <textarea name="description" data-i18n="drinks.description" placeholder="Description" rows="4"></textarea>
+
+          <select name="author" required>
+            <option value="" data-i18n="drinks.author">Select Author</option>
+            {% for author in authors %}
+            <option value="{{ author.value }}">{{ author.value }}</option>
+            {% endfor %}
+          </select>
+
+          <button type="submit" data-i18n="drinks.save">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <p data-i18n="footer">Drink Tracker • Flask + Python</p>
+    </footer>
+  </div>
+
+  <script>
+    window.brandData = {{ brand_data|tojson|safe }};
+  </script>
+  <script src="{{ url_for('static', filename='common.js') }}"></script>
+  <script src="{{ url_for('static', filename='drinks.js') }}"></script>
 </body>
 </html>

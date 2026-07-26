@@ -1,0 +1,9 @@
+{"name": "Red Bull Peach", "brand": "Red Bull", "volume": 0.25, "taste": "Peach Edition(White Peach)", "assessment": 9.2, "description": "Refreshing peach flavour, perfect summer drink.", "author": "Diana", "counter": 5}
+
+{"name": "Monster Classic", "brand": "Monster", "volume": 0.5, "taste": "Classic", "assessment": 8.5, "description": "The original green can. Strong and reliable.", "author": "Mikhail", "counter": 12}
+
+{"name": "Milky's Grape", "brand": "Milky's", "volume": 0.33, "taste": "Grape", "assessment": 7.8, "description": "Sweet grape taste, quite unique among energy drinks.", "author": "Hamid", "counter": 3}
+
+{"name": "Red Bull Sugar Free", "brand": "Red Bull", "volume": 0.355, "taste": "Sugar Free", "assessment": 7.0, "description": "Good when you want less sugar.", "author": "Diana", "counter": 2}
+
+{"name": "Monster White Peach", "brand": "Monster", "volume": 0.5, "taste": "White Peach", "assessment": 8.9, "description": "Ultra series, light and peachy.", "author": "Mikhail", "counter": 7}

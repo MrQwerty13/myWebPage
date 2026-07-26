@@ -1,0 +1,95 @@
+/* ===== Theme variables ===== */
+:root,
+[data-theme="light"] {
+  --bg: #f4f6fc;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-hero: linear-gradient(-45deg, #0b0c1a, #1a1f3a, #2a1f4a, #0b0c1a);
+  --text: #1a1a2e;
+  --text-muted: #555;
+  --text-light: #777;
+  --border: rgba(0, 0, 0, 0.08);
+  --accent: #007BFF;
+  --accent-hover: #0052cc;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.1);
+  --footer-bg: #0b0c1a;
+  --footer-text: #aaa;
+  --control-bg: rgba(255, 255, 255, 0.9);
+  --control-border: #ddd;
+}
+
+[data-theme="dark"] {
+  --bg: #0f111a;
+  --bg-card: rgba(30, 33, 50, 0.9);
+  --bg-hero: linear-gradient(-45deg, #05060d, #0d1224, #1a1230, #05060d);
+  --text: #e8eaf0;
+  --text-muted: #a0a4b8;
+  --text-light: #8a8ea0;
+  --border: rgba(255, 255, 255, 0.1);
+  --accent: #3b9eff;
+  --accent-hover: #1a8cff;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.45);
+  --footer-bg: #05060d;
+  --footer-text: #6a6e80;
+  --control-bg: rgba(30, 33, 50, 0.95);
+  --control-border: #3a3f55;
+}
+
+/* ===== Top controls (lang + theme) ===== */
+.top-controls {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 300;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.lang-switch,
+.theme-switch {
+  display: flex;
+  background: var(--control-bg);
+  border: 1px solid var(--control-border);
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.lang-btn,
+.theme-btn {
+  border: none;
+  background: transparent;
+  padding: 8px 14px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.lang-btn.active,
+.theme-btn.active {
+  background: var(--accent);
+  color: white;
+}
+
+.lang-btn:hover:not(.active),
+.theme-btn:hover:not(.active) {
+  background: rgba(0, 123, 255, 0.1);
+  color: var(--text);
+}
+
+/* Smooth theme transition */
+body,
+.card,
+.reason-card,
+.author-card,
+.modal-content,
+header h1,
+.group-title h2 {
+  transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}

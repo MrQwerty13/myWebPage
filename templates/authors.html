@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Authors – Drink Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='authors.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='common.css') }}" />
+</head>
+<body>
+  <!-- Top controls -->
+  <div class="top-controls">
+    <div class="lang-switch">
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="ru" onclick="setLang('ru')">RU</button>
+    </div>
+    <div class="theme-switch">
+      <button class="theme-btn" data-theme="light" onclick="setTheme('light')" title="Light">☀️</button>
+      <button class="theme-btn" data-theme="dark" onclick="setTheme('dark')" title="Dark">🌙</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1 data-i18n="authors.title">Meet the Authors</h1>
+      <p data-i18n="authors.subtitle">The people behind Drink Tracker</p>
+    </header>
+
+    <div class="authors-grid">
+      {% for author in authors %}
+      {% set info = author_info.get(author.value, {}) %}
+      <section class="author-card" style="--accent: {{ info.color or '#666' }}">
+        <div class="author-avatar">{{ info.emoji or '👤' }}</div>
+        <h2>{{ author.value }}</h2>
+        <p class="role">{{ info.role or '' }}</p>
+        <p class="bio" data-bio-en="{{ info.bio_en }}" data-bio-ru="{{ info.bio_ru }}">
+          {{ info.bio_en }}
+        </p>
+        <div class="favorite">
+          <span class="label" data-i18n="authors.favorite">Favourite drink</span>
+          <span class="value">{{ info.favorite or '—' }}</span>
+        </div>
+      </section>
+      {% endfor %}
+    </div>
+
+    <div class="nav-buttons">
+      <a href="/" class="btn secondary" data-i18n="authors.back">← Back to Home</a>
+      <a href="/drinks" class="btn primary" data-i18n="authors.view_drinks">View Collection →</a>
+    </div>
+  </div>
+
+  <footer>
+    <p data-i18n="footer">Drink Tracker • Flask + Python</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='common.js') }}"></script>
+  <script>
+    // Switch author bios when language changes
+    const originalSetLang = window.setLang;
+    window.setLang = function(lang) {
+      originalSetLang(lang);
+      document.querySelectorAll('.bio').forEach(el => {
+        el.textContent = lang === 'ru' ? el.dataset.bioRu : el.dataset.bioEn;
+      });
+    };
+    // Apply correct bio on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = getLang();
+      document.querySelectorAll('.bio').forEach(el => {
+        el.textContent = lang === 'ru' ? el.dataset.bioRu : el.dataset.bioEn;
+      });
+    });
+  </script>
+</body>
+</html>

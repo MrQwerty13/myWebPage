@@ -6,8 +6,8 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: #f0f2f8;
-  color: #1a1a2e;
+  background: var(--bg, #f0f2f8);
+  color: var(--text, #1a1a2e);
   line-height: 1.6;
 }
 
@@ -18,7 +18,7 @@ body {
   justify-content: center;
   text-align: center;
   padding: 20px;
-  background: linear-gradient(-45deg, #0b0c1a, #1a1f3a, #2a1f4a, #0b0c1a);
+  background: var(--bg-hero, linear-gradient(-45deg, #0b0c1a, #1a1f3a, #2a1f4a, #0b0c1a));
   background-size: 400% 400%;
   animation: gradientShift 12s ease infinite;
   color: white;
@@ -81,19 +81,19 @@ body {
   opacity: 0.9;
 }
 
-.hero-content .subtitle span {
-  background: linear-gradient(45deg, #f5af19, #f12711);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 600;
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .cta-btn {
   display: inline-block;
-  padding: 18px 56px;
+  padding: 18px 48px;
   background: linear-gradient(135deg, #ff4d00, #e04400);
   color: white;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
   text-decoration: none;
   border-radius: 60px;
@@ -107,9 +107,20 @@ body {
   background: linear-gradient(135deg, #ff5e1a, #cc3b00);
 }
 
+.cta-btn.secondary {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  box-shadow: none;
+}
+.cta-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: white;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
 .reasons {
   padding: 100px 20px;
-  background: #ffffff;
+  background: var(--bg, #ffffff);
   position: relative;
 }
 .reasons::before {
@@ -135,6 +146,7 @@ body {
   margin-bottom: 70px;
   font-weight: 600;
   letter-spacing: -0.5px;
+  color: var(--text);
 }
 .reasons h2 span {
   background: linear-gradient(135deg, #ff4d00, #f5af19);
@@ -150,21 +162,19 @@ body {
 }
 
 .reason-card {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--bg-card, rgba(255, 255, 255, 0.7));
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.3));
   padding: 35px 25px 30px;
   border-radius: 28px;
   text-align: center;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow, 0 10px 40px rgba(0, 0, 0, 0.04));
 }
 .reason-card:hover {
   transform: translateY(-12px);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(255, 77, 0, 0.2);
+  box-shadow: var(--shadow-hover, 0 24px 60px rgba(0, 0, 0, 0.08));
 }
 
 .reason-card .icon {
@@ -181,10 +191,10 @@ body {
   font-size: 1.6rem;
   margin-bottom: 12px;
   font-weight: 600;
-  color: #1a1a2e;
+  color: var(--text);
 }
 .reason-card p {
-  color: #555;
+  color: var(--text-muted, #555);
   font-size: 1rem;
   line-height: 1.7;
 }
@@ -192,11 +202,24 @@ body {
 footer {
   text-align: center;
   padding: 40px 20px;
-  background: #0b0c1a;
-  color: #aaa;
+  background: var(--footer-bg, #0b0c1a);
+  color: var(--footer-text, #aaa);
   font-size: 0.95rem;
 }
 footer p {
   margin: 0;
   letter-spacing: 0.3px;
+}
+
+@media (max-width: 600px) {
+  .hero-content h1 {
+    font-size: 3.2rem;
+  }
+  .hero-content .subtitle {
+    font-size: 1.2rem;
+  }
+  .cta-btn {
+    padding: 14px 32px;
+    font-size: 1rem;
+  }
 }
