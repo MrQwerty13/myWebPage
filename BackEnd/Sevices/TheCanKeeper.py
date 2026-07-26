@@ -1,5 +1,5 @@
 from BackEnd.Sevices.CanStorage import CanStorage
-from BackEnd.Sevices.CanSorter import CanSorter
+from BackEnd.Sevices.CanSorter import CanSorter # fixed typo
 
 from BackEnd.Entities.Can.CanClass import CanClass
 

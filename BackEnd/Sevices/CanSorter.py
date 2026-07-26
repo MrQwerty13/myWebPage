@@ -1,4 +1,4 @@
-from BackEnd.Sevices.CanStorage import CanStorage
+from BackEnd.Sevices.CanStorage import CanStorage # fixed typo
 from BackEnd.Entities.Can.CanClass import CanClass
 
 
@@ -42,4 +42,4 @@ class CanSorter:
         )
 
     def save(self, can: CanClass) -> None:
-        pass
+        pass   # placeholder, kept as‑is

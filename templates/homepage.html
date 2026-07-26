@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Red Bull – The Best Energy Drink</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}" />
+</head>
+<body>
+
+  <div class="hero">
+    <div class="hero-content">
+      <h1>🥤 Red Bull</h1>
+      <p class="subtitle">The ultimate energy drink that gives you <span>wings</span></p>
+      <!-- Обычная ссылка на /rb – без JavaScript-перехвата -->
+      <a href="/rb" class="cta-btn">View My Collection →</a>
+    </div>
+  </div>
+
+  <section class="reasons">
+    <div class="container">
+      <h2>Why Red Bull is the <span>Best</span> Energy Drink</h2>
+      <div class="cards-grid">
+        <div class="reason-card">
+          <div class="icon">⚡</div>
+          <h3>Instant Boost</h3>
+          <p>Red Bull provides a quick and sustained energy lift, keeping you focused and alert for hours.</p>
+        </div>
+        <div class="reason-card">
+          <div class="icon">🧠</div>
+          <h3>Enhanced Focus</h3>
+          <p>With taurine and caffeine, it sharpens your concentration – perfect for work or gaming.</p>
+        </div>
+        <div class="reason-card">
+          <div class="icon">🍹</div>
+          <h3>Unique Taste</h3>
+          <p>From Classic to Summer Edition, every flavour is crafted to perfection – never boring.</p>
+        </div>
+        <div class="reason-card">
+          <div class="icon">🌍</div>
+          <h3>Global Icon</h3>
+          <p>Trusted by athletes, artists, and adventurers worldwide – it’s more than a drink, it’s a lifestyle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Red Bull Collection &bull; Flask + Python</p>
+  </footer>
+
+  <!-- Если хотите, можете оставить JS для других целей, но он не должен мешать кнопке -->
+  <!-- <script src="{{ url_for('static', filename='home.js') }}"></script> -->
+</body>
+</html>
