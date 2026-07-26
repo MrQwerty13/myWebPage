@@ -55,3 +55,40 @@ class CanStorage:
     def count(self) -> int:
         """Returns the number of stored cans."""
         return len(self.get_all())
+
+        # CanStorage.py (добавить в конец класса)
+
+    def delete(self, can: CanClass) -> bool:
+        """Удаляет указанную банку из хранилища (по совпадению всех полей)."""
+        cans = self.get_all()
+        initial_count = len(cans)
+
+        # Ищем совпадение по всем полям (исключая возможные дубли)
+        for i, existing in enumerate(cans):
+            if (existing.name == can.name and
+                    existing.volume == can.volume and
+                    existing.taste == can.taste and
+                    existing.assessment == can.assessment and
+                    existing.description == can.description and
+                    existing.author == can.author):
+                del cans[i]
+                break
+
+        # Если ничего не удалили – возвращаем False
+        if len(cans) == initial_count:
+            return False
+
+        # Перезаписываем файл заново
+        with self.file.open("w", encoding="utf-8") as f:
+            for c in cans:
+                data = {
+                    "name": c.name,
+                    "volume": c.volume.value,
+                    "taste": c.taste.value,
+                    "assessment": c.assessment,
+                    "description": c.description,
+                    "author": c.author.value
+                }
+                f.write(json.dumps(data, ensure_ascii=False))
+                f.write("\n\n")
+        return True

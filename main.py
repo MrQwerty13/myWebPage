@@ -1,7 +1,6 @@
 from collections import defaultdict
 from flask import Flask, render_template, request, redirect
 
-# Fixed import path
 from BackEnd.Sevices.TheCanKeeper import TheCanKeeper
 
 from BackEnd.Entities.Can.CanClass import CanClass
@@ -10,6 +9,8 @@ from BackEnd.Entities.Can.Enums.CanEnumTaste import CanEnumTaste
 from BackEnd.Entities.Authors.AuthorEnum import AuthorEnum
 
 from BackEnd.Files.consts import FILE_PATH
+
+
 
 app = Flask(__name__)
 keeper = TheCanKeeper(FILE_PATH)
@@ -56,5 +57,21 @@ def add_can():
     return redirect("/rb")
 
 
+# ---------- DELETE CAN ----------
+@app.route("/del", methods=["POST"])
+def delete_can():
+    can = CanClass(
+        name=request.form["name"],
+        volume=CanEnumVolume(float(request.form["volume"])),
+        taste=CanEnumTaste(request.form["taste"]),
+        assessment=float(request.form["assessment"]),
+        description=request.form["description"],
+        author=AuthorEnum(request.form["author"])
+    )
+    keeper.delete(can)
+    return redirect("/rb")
+
+
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=6767, debug=True)
+    app.run()

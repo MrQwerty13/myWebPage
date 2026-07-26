@@ -36,3 +36,7 @@ class TheCanKeeper:
 
     def count(self) -> int:
         return self.storage.count()
+
+    def delete(self, can: CanClass) -> bool:
+        """Удаляет банку через хранилище."""
+        return self.storage.delete(can)

@@ -27,26 +27,38 @@
     </div>
     <div class="cards">
       {% for can in cans %}
-      <div class="card">
-        <h3>{{ can.name }}</h3>
-        <div class="row">
-          <span class="label">Volume</span>
-          <span class="value">{{ can.volume.value }} L</span>
-        </div>
-        <div class="description">{{ can.description }}</div>
+        <!-- Внутри цикла for can in cans, после .author -->
+<div class="card">
+  <h3>{{ can.name }}</h3>
+  <div class="row">
+    <span class="label">Volume</span>
+    <span class="value">{{ can.volume.value }} L</span>
+  </div>
+  <div class="description">{{ can.description }}</div>
 
-        <!-- Новая полоса рейтинга -->
-        <div class="rating-bar">
-          <div class="rating-fill" style="width: {{ (can.assessment / 10 * 100) }}%;"></div>
-          <span class="rating-value">{{ can.assessment }}</span>
-        </div>
-        <div class="rating-labels">
-          <span>0</span>
-          <span>10</span>
-        </div>
+  <!-- Полоса рейтинга -->
+  <div class="rating-bar">
+    <div class="rating-fill" style="width: {{ (can.assessment / 10 * 100) }}%;"></div>
+    <span class="rating-value">{{ can.assessment }}</span>
+  </div>
+  <div class="rating-labels">
+    <span>0</span>
+    <span>10</span>
+  </div>
 
-        <div class="author">{{ can.author.value }}</div>
-      </div>
+  <div class="author">{{ can.author.value }}</div>
+
+  <!-- ФОРМА УДАЛЕНИЯ -->
+  <form action="/del" method="POST" class="delete-form" onsubmit="return confirmDelete();">
+    <input type="hidden" name="name" value="{{ can.name }}">
+    <input type="hidden" name="volume" value="{{ can.volume.value }}">
+    <input type="hidden" name="taste" value="{{ can.taste.value }}">
+    <input type="hidden" name="assessment" value="{{ can.assessment }}">
+    <input type="hidden" name="description" value="{{ can.description }}">
+    <input type="hidden" name="author" value="{{ can.author.value }}">
+    <button type="submit" class="delete-btn">🗑️</button>
+  </form>
+</div>
       {% endfor %}
     </div>
   </section>

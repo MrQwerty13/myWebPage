@@ -15,3 +15,9 @@ window.onclick = function (event) {
     modal.style.display = 'none';
   }
 };
+
+// rb.js – добавить функцию confirmDelete
+
+function confirmDelete() {
+  return confirm('Are you sure you want to delete this can?');
+}
