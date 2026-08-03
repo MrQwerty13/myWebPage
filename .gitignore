@@ -1,2 +1,7 @@
-.venv
-.idea
+.venv/
+.idea/
+__pycache__/
+*.pyc
+.DS_Store
+storage/data/*.json
+!storage/data/.gitkeep

@@ -1,0 +1,58 @@
+from __future__ import annotations
+
+from werkzeug.security import check_password_hash, generate_password_hash
+
+from models.user import User
+from storage import users_store
+
+
+class AuthError(Exception):
+    pass
+
+
+class AuthService:
+    def create_user(self, username: str, email: str, password: str) -> User:
+        username = username.strip()
+        email = email.strip().lower()
+
+        if len(username) < 3:
+            raise AuthError("Username must be at least 3 characters.")
+        if "@" not in email or "." not in email:
+            raise AuthError("Enter a valid email address.")
+        if len(password) < 6:
+            raise AuthError("Password must be at least 6 characters.")
+
+        if users_store.find(lambda u: u["username"].lower() == username.lower()):
+            raise AuthError("That username is already taken.")
+        if users_store.find(lambda u: u["email"] == email):
+            raise AuthError("That email is already registered.")
+
+        user = User.create(
+            username=username,
+            email=email,
+            password_hash=generate_password_hash(password, method="pbkdf2:sha256"),
+        )
+        users_store.append(user.to_dict())
+        return user
+
+    def authenticate(self, username: str, password: str) -> User:
+        username = username.strip()
+        raw = users_store.find(lambda u: u["username"].lower() == username.lower())
+        if not raw:
+            raise AuthError("Invalid username or password.")
+
+        user = User.from_dict(raw)
+        if not check_password_hash(user.password_hash, password):
+            raise AuthError("Invalid username or password.")
+        return user
+
+    def get_by_id(self, user_id: str) -> User | None:
+        raw = users_store.find(lambda u: u["id"] == user_id)
+        return User.from_dict(raw) if raw else None
+
+    def get_by_ids(self, user_ids: set[str]) -> dict[str, User]:
+        users = {}
+        for raw in users_store.all():
+            if raw["id"] in user_ids:
+                users[raw["id"]] = User.from_dict(raw)
+        return users

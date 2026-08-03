@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Write a take — Aftertaste{% endblock %}
+
+{% block content %}
+<section class="compose">
+  <h1>What did you drink?</h1>
+  <p class="panel-lede">Name the drink, then leave your honest aftertaste.</p>
+
+  <form method="post" class="stack-form">
+    <label>
+      Drink name
+      <input
+        type="text"
+        name="drink_name"
+        required
+        maxlength="80"
+        value="{{ drink_name }}"
+        placeholder="e.g. Oat flat white, Negroni, Matcha latte"
+      >
+    </label>
+    <label>
+      Your take
+      <textarea
+        name="content"
+        required
+        minlength="10"
+        maxlength="2000"
+        rows="7"
+        placeholder="How it smelled, tasted, hit — keep it personal."
+      >{{ content }}</textarea>
+    </label>
+    <button type="submit" class="btn">Publish</button>
+  </form>
+</section>
+{% endblock %}

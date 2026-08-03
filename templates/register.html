@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Join — Aftertaste{% endblock %}
+
+{% block content %}
+<section class="auth-panel">
+  <h1>Join Aftertaste</h1>
+  <p class="panel-lede">Create an account, then post what you drank.</p>
+
+  <form method="post" class="stack-form">
+    <label>
+      Username
+      <input type="text" name="username" required minlength="3" autocomplete="username">
+    </label>
+    <label>
+      Email
+      <input type="email" name="email" required autocomplete="email">
+    </label>
+    <label>
+      Password
+      <input type="password" name="password" required minlength="6" autocomplete="new-password">
+    </label>
+    <button type="submit" class="btn">Create account</button>
+  </form>
+
+  <p class="panel-foot">Already here? <a href="{{ url_for('auth.login') }}">Log in</a></p>
+</section>
+{% endblock %}
