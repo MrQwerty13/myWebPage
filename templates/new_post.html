@@ -1,36 +1,36 @@
 {% extends "base.html" %}
 
-{% block title %}Write a take — Aftertaste{% endblock %}
+{% block title %}{{ _('compose.title') }}{% endblock %}
 
 {% block content %}
 <section class="compose">
-  <h1>What did you drink?</h1>
-  <p class="panel-lede">Name the drink, then leave your honest aftertaste.</p>
+  <h1>{{ _('compose.heading') }}</h1>
+  <p class="panel-lede">{{ _('compose.lede') }}</p>
 
   <form method="post" class="stack-form">
     <label>
-      Drink name
+      {{ _('compose.drink') }}
       <input
         type="text"
         name="drink_name"
         required
         maxlength="80"
         value="{{ drink_name }}"
-        placeholder="e.g. Oat flat white, Negroni, Matcha latte"
+        placeholder="{{ _('compose.drink_ph') }}"
       >
     </label>
     <label>
-      Your take
+      {{ _('compose.take') }}
       <textarea
         name="content"
         required
         minlength="10"
         maxlength="2000"
         rows="7"
-        placeholder="How it smelled, tasted, hit — keep it personal."
+        placeholder="{{ _('compose.take_ph') }}"
       >{{ content }}</textarea>
     </label>
-    <button type="submit" class="btn">Publish</button>
+    <button type="submit" class="btn">{{ _('compose.submit') }}</button>
   </form>
 </section>
 {% endblock %}

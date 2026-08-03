@@ -1,24 +1,24 @@
 {% extends "base.html" %}
 
-{% block title %}Log in — Aftertaste{% endblock %}
+{% block title %}{{ _('login.title') }}{% endblock %}
 
 {% block content %}
 <section class="auth-panel">
-  <h1>Log in</h1>
-  <p class="panel-lede">Pick up where you left your glass.</p>
+  <h1>{{ _('login.heading') }}</h1>
+  <p class="panel-lede">{{ _('login.lede') }}</p>
 
   <form method="post" class="stack-form">
     <label>
-      Username
+      {{ _('field.username') }}
       <input type="text" name="username" required autocomplete="username">
     </label>
     <label>
-      Password
+      {{ _('field.password') }}
       <input type="password" name="password" required autocomplete="current-password">
     </label>
-    <button type="submit" class="btn">Log in</button>
+    <button type="submit" class="btn">{{ _('login.submit') }}</button>
   </form>
 
-  <p class="panel-foot">New here? <a href="{{ url_for('auth.register') }}">Create an account</a></p>
+  <p class="panel-foot">{{ _('login.foot') }} <a href="{{ url_for('auth.register') }}">{{ _('feed.create_account') }}</a></p>
 </section>
 {% endblock %}

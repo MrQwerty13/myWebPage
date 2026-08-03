@@ -3,13 +3,13 @@ from __future__ import annotations
 import json
 import threading
 from pathlib import Path
-from typing import Callable, TypeVar
-
-T = TypeVar("T")
+from typing import Callable
 
 
 class JsonStore:
     """Thread-safe JSON file store for list-shaped collections."""
+
+    __slots__ = ("file_path", "_lock")
 
     def __init__(self, file_path: Path):
         self.file_path = file_path
@@ -27,8 +27,8 @@ class JsonStore:
 
     def _write(self, items: list) -> None:
         with self.file_path.open("w", encoding="utf-8") as handle:
-            json.dump(items, handle, indent=2, ensure_ascii=False)
-            handle.write("\n")
+            # Compact JSON uses less memory/disk than indented dumps.
+            json.dump(items, handle, ensure_ascii=False, separators=(",", ":"))
 
     def all(self) -> list:
         with self._lock:
@@ -56,20 +56,13 @@ class JsonStore:
         with self._lock:
             return [item for item in self._read() if predicate(item)]
 
-    def replace_where(
-        self,
-        predicate: Callable[[dict], bool],
-        replacer: Callable[[dict], dict],
-    ) -> dict | None:
+    def update(self, mutator: Callable[[list], object]):
+        """Read once, apply mutator(items), write once. Returns mutator result."""
         with self._lock:
             items = self._read()
-            for index, item in enumerate(items):
-                if predicate(item):
-                    updated = replacer(item)
-                    items[index] = updated
-                    self._write(items)
-                    return updated
-        return None
+            result = mutator(items)
+            self._write(items)
+            return result
 
     def delete_where(self, predicate: Callable[[dict], bool]) -> int:
         with self._lock:

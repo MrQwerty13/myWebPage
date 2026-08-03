@@ -1,5 +1,6 @@
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 
+from i18n import translate
 from routes.helpers import login_required
 from services import AuthError, auth_service
 
@@ -19,10 +20,10 @@ def register():
             user = auth_service.create_user(username, email, password)
             session.clear()
             session["user_id"] = user.id
-            flash("Welcome to Aftertaste.", "success")
+            flash(translate("flash.welcome"), "success")
             return redirect(url_for("posts.feed"))
         except AuthError as exc:
-            flash(str(exc), "error")
+            flash(translate(str(exc)), "error")
 
     return render_template("register.html")
 
@@ -39,10 +40,10 @@ def login():
             user = auth_service.authenticate(username, password)
             session.clear()
             session["user_id"] = user.id
-            flash(f"Hey, {user.username}.", "success")
+            flash(translate("flash.hello", username=user.username), "success")
             return redirect(url_for("posts.feed"))
         except AuthError as exc:
-            flash(str(exc), "error")
+            flash(translate(str(exc)), "error")
 
     return render_template("login.html")
 
@@ -51,5 +52,5 @@ def login():
 @login_required
 def logout():
     session.clear()
-    flash("Signed out.", "success")
+    flash(translate("flash.signed_out"), "success")
     return redirect(url_for("posts.feed"))

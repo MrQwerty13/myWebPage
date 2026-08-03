@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('mod.unlock_heading') }} — Aftertaste{% endblock %}
+
+{% block content %}
+<section class="compose">
+  <h1>{{ _('mod.unlock_heading') }}</h1>
+  <p class="panel-lede">{{ _('mod.unlock_lede') }}</p>
+  <form method="post" class="stack-form">
+    <label>
+      {{ _('mod.key') }}
+      <input type="password" name="key" required autocomplete="current-password">
+    </label>
+    <button type="submit" class="btn">{{ _('mod.unlock') }}</button>
+  </form>
+</section>
+{% endblock %}

@@ -1,28 +1,28 @@
 {% extends "base.html" %}
 
-{% block title %}Join — Aftertaste{% endblock %}
+{% block title %}{{ _('register.title') }}{% endblock %}
 
 {% block content %}
 <section class="auth-panel">
-  <h1>Join Aftertaste</h1>
-  <p class="panel-lede">Create an account, then post what you drank.</p>
+  <h1>{{ _('register.heading') }}</h1>
+  <p class="panel-lede">{{ _('register.lede') }}</p>
 
   <form method="post" class="stack-form">
     <label>
-      Username
+      {{ _('field.username') }}
       <input type="text" name="username" required minlength="3" autocomplete="username">
     </label>
     <label>
-      Email
+      {{ _('field.email') }}
       <input type="email" name="email" required autocomplete="email">
     </label>
     <label>
-      Password
+      {{ _('field.password') }}
       <input type="password" name="password" required minlength="6" autocomplete="new-password">
     </label>
-    <button type="submit" class="btn">Create account</button>
+    <button type="submit" class="btn">{{ _('register.submit') }}</button>
   </form>
 
-  <p class="panel-foot">Already here? <a href="{{ url_for('auth.login') }}">Log in</a></p>
+  <p class="panel-foot">{{ _('register.foot') }} <a href="{{ url_for('auth.login') }}">{{ _('nav.log_in') }}</a></p>
 </section>
 {% endblock %}

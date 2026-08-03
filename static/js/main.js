@@ -1,4 +1,8 @@
 (() => {
+  const likeText = document.body.dataset.i18nLike || "Like";
+  const likedText = document.body.dataset.i18nLiked || "Liked";
+  const likeError = document.body.dataset.i18nLikeError || "Could not update like. Try again.";
+
   const buttons = document.querySelectorAll(".like-btn[data-post-id]");
 
   buttons.forEach((button) => {
@@ -29,16 +33,15 @@
 
         button.dataset.liked = data.liked ? "true" : "false";
         button.classList.toggle("is-liked", data.liked);
-        if (label) label.textContent = data.liked ? "Liked" : "Like";
+        if (label) label.textContent = data.liked ? likedText : likeText;
         if (count) count.textContent = String(data.like_count);
 
         button.classList.remove("pop");
-        // Force reflow so the animation can replay.
         void button.offsetWidth;
         button.classList.add("pop");
       } catch (error) {
         console.error(error);
-        alert("Could not update like. Try again.");
+        alert(likeError);
       } finally {
         button.disabled = false;
       }

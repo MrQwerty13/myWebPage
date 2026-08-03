@@ -1,26 +1,26 @@
 {% extends "base.html" %}
 
-{% block title %}Aftertaste — drinks, then opinions{% endblock %}
+{% block title %}{{ _('feed.title') }}{% endblock %}
 
 {% block content %}
 <section class="hero">
-  <p class="hero-kicker">Drink first. Talk later.</p>
+  <p class="hero-kicker">{{ _('feed.kicker') }}</p>
   <h1 class="hero-brand">Aftertaste</h1>
-  <p class="hero-lede">Short takes on what you just sipped — coffee, cocktails, tea, anything in a glass.</p>
+  <p class="hero-lede">{{ _('feed.lede') }}</p>
   <div class="hero-actions">
     {% if g.user %}
-      <a class="btn" href="{{ url_for('posts.new_post') }}">Write a take</a>
+      <a class="btn" href="{{ url_for('posts.new_post') }}">{{ _('nav.write') }}</a>
     {% else %}
-      <a class="btn" href="{{ url_for('auth.register') }}">Create an account</a>
-      <a class="btn btn-ghost" href="{{ url_for('auth.login') }}">Log in</a>
+      <a class="btn" href="{{ url_for('auth.register') }}">{{ _('feed.create_account') }}</a>
+      <a class="btn btn-ghost" href="{{ url_for('auth.login') }}">{{ _('nav.log_in') }}</a>
     {% endif %}
   </div>
 </section>
 
 <section class="feed-section" aria-labelledby="feed-heading">
   <div class="section-head">
-    <h2 id="feed-heading">Latest takes</h2>
-    <p>What people finished drinking, and what they thought.</p>
+    <h2 id="feed-heading">{{ _('feed.latest') }}</h2>
+    <p>{{ _('feed.latest_lede') }}</p>
   </div>
 
   {% if posts %}
@@ -30,7 +30,7 @@
           <a class="take-drink" href="{{ url_for('posts.detail', post_id=post.id) }}">{{ post.drink_name }}</a>
           <p class="take-body">{{ post.content }}</p>
           <div class="take-meta">
-            <span>by {{ post.author_name }}</span>
+            <span>{{ _('feed.by', name=post.author_name) }}</span>
             <span>{{ post.created_label }}</span>
           </div>
           <div class="take-actions">
@@ -39,18 +39,18 @@
               class="like-btn{% if post.liked %} is-liked{% endif %}"
               data-post-id="{{ post.id }}"
               data-liked="{{ 'true' if post.liked else 'false' }}"
-              {% if not g.user %}disabled title="Log in to like"{% endif %}
+              {% if not g.user %}disabled title="{{ _('like.login') }}"{% endif %}
             >
-              <span class="like-label">{% if post.liked %}Liked{% else %}Like{% endif %}</span>
+              <span class="like-label">{% if post.liked %}{{ _('liked') }}{% else %}{{ _('like') }}{% endif %}</span>
               <span class="like-count" data-count>{{ post.like_count }}</span>
             </button>
-            <a class="text-link" href="{{ url_for('posts.detail', post_id=post.id) }}">Open</a>
+            <a class="text-link" href="{{ url_for('posts.detail', post_id=post.id) }}">{{ _('feed.open') }}</a>
           </div>
         </li>
       {% endfor %}
     </ul>
   {% else %}
-    <p class="empty">No takes yet. Be the first to post what you drank.</p>
+    <p class="empty">{{ _('feed.empty') }}</p>
   {% endif %}
 </section>
 {% endblock %}

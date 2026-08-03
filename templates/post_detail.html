@@ -4,11 +4,11 @@
 
 {% block content %}
 <article class="detail">
-  <p class="detail-kicker">One take</p>
+  <p class="detail-kicker">{{ _('detail.kicker') }}</p>
   <h1>{{ post.drink_name }}</h1>
   <p class="detail-body">{{ post.content }}</p>
   <div class="take-meta">
-    <span>by {{ post.author_name }}</span>
+    <span>{{ _('feed.by', name=post.author_name) }}</span>
     <span>{{ post.created_label }}</span>
   </div>
   <div class="take-actions">
@@ -17,12 +17,12 @@
       class="like-btn{% if post.liked %} is-liked{% endif %}"
       data-post-id="{{ post.id }}"
       data-liked="{{ 'true' if post.liked else 'false' }}"
-      {% if not g.user %}disabled title="Log in to like"{% endif %}
+      {% if not g.user %}disabled title="{{ _('like.login') }}"{% endif %}
     >
-      <span class="like-label">{% if post.liked %}Liked{% else %}Like{% endif %}</span>
+      <span class="like-label">{% if post.liked %}{{ _('liked') }}{% else %}{{ _('like') }}{% endif %}</span>
       <span class="like-count" data-count>{{ post.like_count }}</span>
     </button>
-    <a class="text-link" href="{{ url_for('posts.feed') }}">Back to feed</a>
+    <a class="text-link" href="{{ url_for('posts.feed') }}">{{ _('detail.back') }}</a>
   </div>
 </article>
 {% endblock %}

@@ -4,6 +4,7 @@ from datetime import datetime
 
 from flask import Blueprint, flash, g, redirect, render_template, request, url_for
 
+from i18n import current_lang, translate
 from routes.helpers import login_required
 from services import PostError, auth_service, like_service, post_service
 
@@ -13,18 +14,21 @@ posts_bp = Blueprint("posts", __name__)
 def _format_when(iso_value: str) -> str:
     try:
         dt = datetime.fromisoformat(iso_value)
+        if current_lang() == "ru":
+            return dt.strftime("%d.%m.%Y · %H:%M")
         return dt.strftime("%b %d, %Y · %H:%M")
     except ValueError:
         return iso_value
 
 
 def _enrich_posts(posts, current_user_id: str | None):
+    if not posts:
+        return []
+
     authors = auth_service.get_by_ids({post.author_id for post in posts})
-    like_counts = like_service.count_by_post()
-    liked_ids = (
-        like_service.liked_post_ids_for_user(current_user_id)
-        if current_user_id
-        else set()
+    like_counts, liked_ids = like_service.stats_for_feed(
+        {post.id for post in posts},
+        current_user_id,
     )
 
     cards = []
@@ -35,9 +39,8 @@ def _enrich_posts(posts, current_user_id: str | None):
                 "id": post.id,
                 "drink_name": post.drink_name,
                 "content": post.content,
-                "created_at": post.created_at,
                 "created_label": _format_when(post.created_at),
-                "author_name": author.username if author else "Unknown",
+                "author_name": author.username if author else translate("unknown_author"),
                 "like_count": like_counts.get(post.id, 0),
                 "liked": post.id in liked_ids,
             }
@@ -60,10 +63,10 @@ def new_post():
         content = request.form.get("content", "")
         try:
             post = post_service.create_post(g.user.id, drink_name, content)
-            flash("Your take is live.", "success")
+            flash(translate("flash.post_live"), "success")
             return redirect(url_for("posts.detail", post_id=post.id))
         except PostError as exc:
-            flash(str(exc), "error")
+            flash(translate(str(exc)), "error")
             return render_template(
                 "new_post.html",
                 drink_name=drink_name,
@@ -77,7 +80,7 @@ def new_post():
 def detail(post_id: str):
     post = post_service.get_by_id(post_id)
     if not post:
-        flash("Post not found.", "error")
+        flash(translate("flash.post_missing"), "error")
         return redirect(url_for("posts.feed"))
 
     cards = _enrich_posts([post], g.user.id if g.user else None)
