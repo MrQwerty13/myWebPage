@@ -34,10 +34,10 @@ def login():
         return redirect(url_for("posts.feed"))
 
     if request.method == "POST":
-        username = request.form.get("username", "")
+        email = request.form.get("email", "")
         password = request.form.get("password", "")
         try:
-            user = auth_service.authenticate(username, password)
+            user = auth_service.authenticate(email, password)
             session.clear()
             session["user_id"] = user.id
             flash(translate("flash.hello", username=user.username), "success")
@@ -53,4 +53,24 @@ def login():
 def logout():
     session.clear()
     flash(translate("flash.signed_out"), "success")
+    return redirect(url_for("posts.feed"))
+
+
+@auth_bp.route("/settings", methods=["GET"])
+def settings():
+    return render_template("settings.html")
+
+
+@auth_bp.route("/settings/delete", methods=["POST"])
+@login_required
+def delete_account():
+    password = request.form.get("password", "")
+    if not auth_service.verify_password(g.user, password):
+        flash(translate("settings.delete_bad_password"), "error")
+        return redirect(url_for("auth.settings"))
+
+    user_id = g.user.id
+    auth_service.delete_account(user_id)
+    session.clear()
+    flash(translate("flash.account_deleted"), "success")
     return redirect(url_for("posts.feed"))

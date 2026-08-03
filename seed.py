@@ -37,7 +37,7 @@ def main() -> None:
     like_service.toggle_like(p1.id, leo.id)
     like_service.toggle_like(p2.id, anna.id)
 
-    print("Seeded users: anna / leo (password: password)")
+    print("Seeded users: anna@example.com / leo@example.com (password: password)")
     print("Seeded 3 posts and a couple of likes.")
 
 

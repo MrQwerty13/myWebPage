@@ -3,6 +3,7 @@ from __future__ import annotations
 STRINGS: dict[str, dict[str, str]] = {
     # Nav / chrome
     "nav.write": {"en": "Write a take", "ru": "Написать отзыв"},
+    "nav.settings": {"en": "Settings", "ru": "Настройки"},
     "nav.sign_out": {"en": "Sign out", "ru": "Выйти"},
     "nav.log_in": {"en": "Log in", "ru": "Войти"},
     "nav.join": {"en": "Join", "ru": "Регистрация"},
@@ -18,7 +19,6 @@ STRINGS: dict[str, dict[str, str]] = {
     "prefs.accent_blue": {"en": "Blue", "ru": "Синий"},
     "prefs.accent_amber": {"en": "Amber", "ru": "Янтарный"},
     "prefs.accent_teal": {"en": "Teal", "ru": "Бирюза"},
-    "prefs.look": {"en": "Look", "ru": "Вид"},
     # Feed
     "feed.title": {
         "en": "Aftertaste — drinks, then opinions",
@@ -117,8 +117,51 @@ STRINGS: dict[str, dict[str, str]] = {
         "ru": "Этот email уже зарегистрирован.",
     },
     "invalid_credentials": {
-        "en": "Invalid username or password.",
-        "ru": "Неверное имя пользователя или пароль.",
+        "en": "Invalid email or password.",
+        "ru": "Неверный email или пароль.",
+    },
+    # Settings
+    "settings.title": {"en": "Settings — Aftertaste", "ru": "Настройки — Aftertaste"},
+    "settings.heading": {"en": "Settings", "ru": "Настройки"},
+    "settings.lede": {
+        "en": "Tune how Aftertaste looks, and manage your account.",
+        "ru": "Настройте внешний вид Aftertaste и управляйте аккаунтом.",
+    },
+    "settings.appearance": {"en": "Appearance", "ru": "Внешний вид"},
+    "settings.appearance_lede": {
+        "en": "Theme, accent color, and language for this browser.",
+        "ru": "Тема, цвет акцента и язык для этого браузера.",
+    },
+    "settings.account": {"en": "Account", "ru": "Аккаунт"},
+    "settings.signed_in_as": {
+        "en": "Signed in as {name}.",
+        "ru": "Вы вошли как {name}.",
+    },
+    "settings.signed_out_hint": {
+        "en": "Sign in to post takes and manage your account.",
+        "ru": "Войдите, чтобы публиковать отзывы и управлять аккаунтом.",
+    },
+    "settings.danger": {"en": "Danger zone", "ru": "Опасная зона"},
+    "settings.delete_lede": {
+        "en": "Permanently delete your account, your takes, and your likes. This cannot be undone.",
+        "ru": "Навсегда удалит аккаунт, ваши отзывы и оценки. Это нельзя отменить.",
+    },
+    "settings.delete_password": {
+        "en": "Confirm with your password",
+        "ru": "Подтвердите паролем",
+    },
+    "settings.delete_submit": {"en": "Delete account", "ru": "Удалить аккаунт"},
+    "settings.delete_confirm": {
+        "en": "Delete your account and all your takes permanently?",
+        "ru": "Удалить аккаунт и все ваши отзывы навсегда?",
+    },
+    "settings.delete_bad_password": {
+        "en": "Wrong password. Account was not deleted.",
+        "ru": "Неверный пароль. Аккаунт не удалён.",
+    },
+    "flash.account_deleted": {
+        "en": "Your account was deleted.",
+        "ru": "Ваш аккаунт удалён.",
     },
     "drink_name_required": {
         "en": "Drink name is required.",

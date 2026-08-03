@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('settings.title') }}{% endblock %}
+
+{% block content %}
+<section class="sheet settings-sheet">
+  <p class="sheet-kicker">Aftertaste</p>
+  <h1>{{ _('settings.heading') }}</h1>
+  <p class="sheet-lede">{{ _('settings.lede') }}</p>
+
+  <section class="settings-block">
+    <h2>{{ _('settings.appearance') }}</h2>
+    <p class="settings-hint">{{ _('settings.appearance_lede') }}</p>
+
+    <form action="{{ url_for('prefs.set_theme') }}" method="post" class="seg">
+      <input type="hidden" name="next" value="{{ url_for('auth.settings') }}">
+      <span class="seg-label">{{ _('prefs.theme') }}</span>
+      <div class="seg-row">
+        <button type="submit" name="theme" value="light" class="seg-btn{% if theme == 'light' %} is-on{% endif %}" aria-pressed="{{ 'true' if theme == 'light' else 'false' }}">{{ _('prefs.theme_light') }}</button>
+        <button type="submit" name="theme" value="dark" class="seg-btn{% if theme == 'dark' %} is-on{% endif %}" aria-pressed="{{ 'true' if theme == 'dark' else 'false' }}">{{ _('prefs.theme_dark') }}</button>
+      </div>
+    </form>
+
+    <form action="{{ url_for('prefs.set_accent') }}" method="post" class="seg">
+      <input type="hidden" name="next" value="{{ url_for('auth.settings') }}">
+      <span class="seg-label">{{ _('prefs.accent') }}</span>
+      <div class="seg-row swatches">
+        {% for name in accents %}
+          <button
+            type="submit"
+            name="accent"
+            value="{{ name }}"
+            class="swatch{% if accent == name %} is-on{% endif %}"
+            style="--swatch: {{ accent_swatches[name] }}"
+            title="{{ _('prefs.accent_' ~ name) }}"
+            aria-label="{{ _('prefs.accent_' ~ name) }}"
+            aria-pressed="{{ 'true' if accent == name else 'false' }}"
+          ></button>
+        {% endfor %}
+      </div>
+    </form>
+
+    <form action="{{ url_for('prefs.set_lang') }}" method="post" class="seg">
+      <input type="hidden" name="next" value="{{ url_for('auth.settings') }}">
+      <span class="seg-label">{{ _('prefs.lang') }}</span>
+      <div class="seg-row">
+        <button type="submit" name="lang" value="en" class="seg-btn{% if lang == 'en' %} is-on{% endif %}" aria-pressed="{{ 'true' if lang == 'en' else 'false' }}">{{ _('prefs.lang_en') }}</button>
+        <button type="submit" name="lang" value="ru" class="seg-btn{% if lang == 'ru' %} is-on{% endif %}" aria-pressed="{{ 'true' if lang == 'ru' else 'false' }}">{{ _('prefs.lang_ru') }}</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="settings-block">
+    <h2>{{ _('settings.account') }}</h2>
+    {% if g.user %}
+      <p class="settings-hint">{{ _('settings.signed_in_as', name=g.user.username) }}</p>
+      <dl class="settings-meta">
+        <div>
+          <dt>{{ _('field.username') }}</dt>
+          <dd>{{ g.user.username }}</dd>
+        </div>
+        <div>
+          <dt>{{ _('field.email') }}</dt>
+          <dd>{{ g.user.email }}</dd>
+        </div>
+      </dl>
+      <form action="{{ url_for('auth.logout') }}" method="post" class="settings-actions">
+        <button type="submit" class="btn btn-ghost">{{ _('nav.sign_out') }}</button>
+      </form>
+    {% else %}
+      <p class="settings-hint">{{ _('settings.signed_out_hint') }}</p>
+      <div class="settings-actions">
+        <a class="btn" href="{{ url_for('auth.login') }}">{{ _('nav.log_in') }}</a>
+        <a class="btn btn-ghost" href="{{ url_for('auth.register') }}">{{ _('nav.join') }}</a>
+      </div>
+    {% endif %}
+  </section>
+
+  {% if g.user %}
+    <section class="settings-block settings-danger">
+      <h2>{{ _('settings.danger') }}</h2>
+      <p class="settings-hint">{{ _('settings.delete_lede') }}</p>
+      <form
+        action="{{ url_for('auth.delete_account') }}"
+        method="post"
+        class="stack-form"
+        onsubmit="return confirm({{ _('settings.delete_confirm')|tojson }});"
+      >
+        <label>
+          {{ _('settings.delete_password') }}
+          <input type="password" name="password" required autocomplete="current-password">
+        </label>
+        <button type="submit" class="btn btn-danger">{{ _('settings.delete_submit') }}</button>
+      </form>
+    </section>
+  {% endif %}
+</section>
+{% endblock %}

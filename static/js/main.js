@@ -45,13 +45,4 @@
       }
     });
   });
-
-  // Close Look panel when clicking outside.
-  const look = document.querySelector("details.look");
-  if (look) {
-    document.addEventListener("click", (event) => {
-      if (!look.open) return;
-      if (!look.contains(event.target)) look.open = false;
-    });
-  }
 })();

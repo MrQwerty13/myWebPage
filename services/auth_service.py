@@ -3,7 +3,7 @@ from __future__ import annotations
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from models.user import User
-from storage import users_store
+from storage import likes_store, posts_store, users_store
 
 
 class AuthError(Exception):
@@ -35,9 +35,9 @@ class AuthService:
         users_store.append(user.to_dict())
         return user
 
-    def authenticate(self, username: str, password: str) -> User:
-        username = username.strip()
-        raw = users_store.find(lambda u: u["username"].lower() == username.lower())
+    def authenticate(self, email: str, password: str) -> User:
+        email = email.strip().lower()
+        raw = users_store.find(lambda u: u["email"] == email)
         if not raw:
             raise AuthError("invalid_credentials")
 
@@ -45,6 +45,25 @@ class AuthService:
         if not check_password_hash(user.password_hash, password):
             raise AuthError("invalid_credentials")
         return user
+
+    def verify_password(self, user: User, password: str) -> bool:
+        return check_password_hash(user.password_hash, password)
+
+    def delete_account(self, user_id: str) -> bool:
+        raw = users_store.find(lambda u: u["id"] == user_id)
+        if not raw:
+            return False
+
+        post_ids = {
+            post["id"]
+            for post in posts_store.filter(lambda p: p["author_id"] == user_id)
+        }
+        likes_store.delete_where(
+            lambda like: like["user_id"] == user_id or like["post_id"] in post_ids
+        )
+        posts_store.delete_where(lambda post: post["author_id"] == user_id)
+        users_store.delete_where(lambda u: u["id"] == user_id)
+        return True
 
     def get_by_id(self, user_id: str) -> User | None:
         raw = users_store.find(lambda u: u["id"] == user_id)

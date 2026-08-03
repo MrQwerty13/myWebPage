@@ -360,56 +360,6 @@ a:hover {
   opacity: 0.55;
 }
 
-.topbar-cluster {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-.look {
-  position: relative;
-}
-
-.look-summary {
-  list-style: none;
-  cursor: pointer;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--ink);
-  border-radius: 999px;
-  padding: 0.45rem 0.85rem;
-  font-size: 0.82rem;
-  font-weight: 700;
-  min-height: 40px;
-  display: inline-flex;
-  align-items: center;
-}
-
-.look-summary::-webkit-details-marker {
-  display: none;
-}
-
-.look[open] .look-summary {
-  border-color: var(--leaf);
-}
-
-.look-panel {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 0.45rem);
-  width: min(88vw, 280px);
-  padding: 0.85rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface);
-  backdrop-filter: blur(16px);
-  display: grid;
-  gap: 0.85rem;
-  animation: rise 0.2s ease;
-}
-
 .seg {
   margin: 0;
   display: grid;
@@ -492,6 +442,11 @@ a:hover {
   color: var(--ink-soft);
   font-size: 0.86rem;
   font-weight: 600;
+  text-decoration: none;
+}
+
+.nav-user:hover {
+  color: var(--ink);
 }
 
 .inline-form {
@@ -871,15 +826,71 @@ button.btn-danger:hover {
   box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
+.settings-sheet {
+  max-width: 36rem;
+}
+
+.settings-block {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 1rem;
+}
+
+.settings-block h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.settings-hint {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.settings-meta {
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.settings-meta div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.settings-meta dt {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.settings-meta dd {
+  margin: 0;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.settings-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 0;
+}
+
+.settings-danger .settings-hint {
+  color: var(--danger);
+}
+
 @media (max-width: 720px) {
   .topbar {
     align-items: flex-start;
     flex-wrap: wrap;
-  }
-
-  .topbar-cluster {
-    width: 100%;
-    justify-content: space-between;
   }
 
   .hero {
