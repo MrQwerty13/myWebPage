@@ -3,15 +3,15 @@
 {% block title %}{{ post.drink_name }} — Aftertaste{% endblock %}
 
 {% block content %}
-<article class="detail">
-  <p class="detail-kicker">{{ _('detail.kicker') }}</p>
-  <h1>{{ post.drink_name }}</h1>
+<article class="sheet detail">
+  <p class="sheet-kicker">{{ _('detail.kicker') }}</p>
+  <h1 class="detail-drink">{{ post.drink_name }}</h1>
   <p class="detail-body">{{ post.content }}</p>
-  <div class="take-meta">
+  <div class="note-meta">
     <span>{{ _('feed.by', name=post.author_name) }}</span>
     <span>{{ post.created_label }}</span>
   </div>
-  <div class="take-actions">
+  <div class="note-actions">
     <button
       type="button"
       class="like-btn{% if post.liked %} is-liked{% endif %}"

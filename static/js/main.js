@@ -3,9 +3,7 @@
   const likedText = document.body.dataset.i18nLiked || "Liked";
   const likeError = document.body.dataset.i18nLikeError || "Could not update like. Try again.";
 
-  const buttons = document.querySelectorAll(".like-btn[data-post-id]");
-
-  buttons.forEach((button) => {
+  document.querySelectorAll(".like-btn[data-post-id]").forEach((button) => {
     button.addEventListener("click", async () => {
       if (button.disabled) return;
 
@@ -47,4 +45,13 @@
       }
     });
   });
+
+  // Close Look panel when clicking outside.
+  const look = document.querySelector("details.look");
+  if (look) {
+    document.addEventListener("click", (event) => {
+      if (!look.open) return;
+      if (!look.contains(event.target)) look.open = false;
+    });
+  }
 })();

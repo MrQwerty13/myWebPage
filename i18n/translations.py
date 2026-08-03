@@ -18,6 +18,7 @@ STRINGS: dict[str, dict[str, str]] = {
     "prefs.accent_blue": {"en": "Blue", "ru": "Синий"},
     "prefs.accent_amber": {"en": "Amber", "ru": "Янтарный"},
     "prefs.accent_teal": {"en": "Teal", "ru": "Бирюза"},
+    "prefs.look": {"en": "Look", "ru": "Вид"},
     # Feed
     "feed.title": {
         "en": "Aftertaste — drinks, then opinions",

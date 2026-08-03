@@ -3,38 +3,43 @@
 {% block title %}{{ _('mod.title') }} — Aftertaste{% endblock %}
 
 {% block content %}
-<section class="mod-panel">
-  <div class="section-head">
-    <h2>{{ _('mod.title') }}</h2>
+<section class="notes mod-notes">
+  <header class="notes-head notes-head-row">
+    <div>
+      <h2>{{ _('mod.title') }}</h2>
+    </div>
     <form action="{{ url_for('mod.lock') }}" method="post" class="inline-form">
-      <button type="submit" class="linkish">{{ _('mod.lock') }}</button>
+      <button type="submit" class="nav-link as-button">{{ _('mod.lock') }}</button>
     </form>
-  </div>
+  </header>
 
   {% if posts %}
-    <ul class="feed">
+    <ol class="notes-list">
       {% for post in posts %}
-        <li class="take" style="--i: {{ loop.index0 }}">
-          <a class="take-drink" href="{{ url_for('posts.detail', post_id=post.id) }}">{{ post.drink_name }}</a>
-          <p class="take-body">{{ post.content }}</p>
-          <div class="take-meta">
-            <span>{{ _('feed.by', name=post.author_name) }}</span>
-            <span>{{ post.created_label }}</span>
-            <span>{{ post.like_count }} · {{ _('like') }}</span>
-          </div>
-          <div class="take-actions">
-            <form
-              action="{{ url_for('mod.delete_post', post_id=post.id) }}"
-              method="post"
-              onsubmit="return confirm({{ _('mod.confirm')|tojson }});"
-            >
-              <button type="submit" class="btn btn-danger btn-small">{{ _('mod.delete') }}</button>
-            </form>
-            <a class="text-link" href="{{ url_for('posts.detail', post_id=post.id) }}">{{ _('feed.open') }}</a>
+        <li class="note" style="--i: {{ loop.index0 }}">
+          <div class="note-index" aria-hidden="true">{{ '%02d'|format(loop.index) }}</div>
+          <div class="note-main">
+            <a class="note-drink" href="{{ url_for('posts.detail', post_id=post.id) }}">{{ post.drink_name }}</a>
+            <p class="note-body">{{ post.content }}</p>
+            <div class="note-meta">
+              <span>{{ _('feed.by', name=post.author_name) }}</span>
+              <span>{{ post.created_label }}</span>
+              <span>{{ post.like_count }} · {{ _('like') }}</span>
+            </div>
+            <div class="note-actions">
+              <form
+                action="{{ url_for('mod.delete_post', post_id=post.id) }}"
+                method="post"
+                onsubmit="return confirm({{ _('mod.confirm')|tojson }});"
+              >
+                <button type="submit" class="btn btn-danger btn-sm">{{ _('mod.delete') }}</button>
+              </form>
+              <a class="text-link" href="{{ url_for('posts.detail', post_id=post.id) }}">{{ _('feed.open') }}</a>
+            </div>
           </div>
         </li>
       {% endfor %}
-    </ul>
+    </ol>
   {% else %}
     <p class="empty">{{ _('mod.empty') }}</p>
   {% endif %}

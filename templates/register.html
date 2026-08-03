@@ -3,9 +3,10 @@
 {% block title %}{{ _('register.title') }}{% endblock %}
 
 {% block content %}
-<section class="auth-panel">
+<section class="sheet">
+  <p class="sheet-kicker">Aftertaste</p>
   <h1>{{ _('register.heading') }}</h1>
-  <p class="panel-lede">{{ _('register.lede') }}</p>
+  <p class="sheet-lede">{{ _('register.lede') }}</p>
 
   <form method="post" class="stack-form">
     <label>
@@ -23,6 +24,6 @@
     <button type="submit" class="btn">{{ _('register.submit') }}</button>
   </form>
 
-  <p class="panel-foot">{{ _('register.foot') }} <a href="{{ url_for('auth.login') }}">{{ _('nav.log_in') }}</a></p>
+  <p class="sheet-foot">{{ _('register.foot') }} <a href="{{ url_for('auth.login') }}">{{ _('nav.log_in') }}</a></p>
 </section>
 {% endblock %}

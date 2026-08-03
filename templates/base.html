@@ -6,83 +6,78 @@
   <title>{% block title %}Aftertaste{% endblock %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body
+  class="{% block body_class %}{% endblock %}"
   data-i18n-like="{{ _('like') }}"
   data-i18n-liked="{{ _('liked') }}"
   data-i18n-like-error="{{ _('like.error') }}"
 >
-  <div class="atmosphere" aria-hidden="true"></div>
+  <div class="stage" aria-hidden="true">
+    <div class="stage-wash"></div>
+    <div class="stage-orb stage-orb-a"></div>
+    <div class="stage-orb stage-orb-b"></div>
+    <div class="stage-grain"></div>
+  </div>
 
-  <header class="site-header">
-    <a class="brand" href="{{ url_for('posts.feed') }}">Aftertaste</a>
-    <div class="header-tools">
-      <div class="prefs" aria-label="{{ _('prefs.theme') }} / {{ _('prefs.accent') }} / {{ _('prefs.lang') }}">
-        <form action="{{ url_for('prefs.set_theme') }}" method="post" class="pref-group">
-          <input type="hidden" name="next" value="{{ request.path }}">
-          <span class="pref-label">{{ _('prefs.theme') }}</span>
-          <button
-            type="submit"
-            name="theme"
-            value="light"
-            class="pref-btn{% if theme == 'light' %} is-active{% endif %}"
-            aria-pressed="{{ 'true' if theme == 'light' else 'false' }}"
-          >{{ _('prefs.theme_light') }}</button>
-          <button
-            type="submit"
-            name="theme"
-            value="dark"
-            class="pref-btn{% if theme == 'dark' %} is-active{% endif %}"
-            aria-pressed="{{ 'true' if theme == 'dark' else 'false' }}"
-          >{{ _('prefs.theme_dark') }}</button>
-        </form>
-        <form action="{{ url_for('prefs.set_accent') }}" method="post" class="pref-group pref-accents">
-          <input type="hidden" name="next" value="{{ request.path }}">
-          <span class="pref-label">{{ _('prefs.accent') }}</span>
-          {% for name in accents %}
-            <button
-              type="submit"
-              name="accent"
-              value="{{ name }}"
-              class="accent-swatch{% if accent == name %} is-active{% endif %}"
-              style="--swatch: {{ accent_swatches[name] }}"
-              title="{{ _('prefs.accent_' ~ name) }}"
-              aria-label="{{ _('prefs.accent_' ~ name) }}"
-              aria-pressed="{{ 'true' if accent == name else 'false' }}"
-            ></button>
-          {% endfor %}
-        </form>
-        <form action="{{ url_for('prefs.set_lang') }}" method="post" class="pref-group">
-          <input type="hidden" name="next" value="{{ request.path }}">
-          <span class="pref-label">{{ _('prefs.lang') }}</span>
-          <button
-            type="submit"
-            name="lang"
-            value="en"
-            class="pref-btn{% if lang == 'en' %} is-active{% endif %}"
-            aria-pressed="{{ 'true' if lang == 'en' else 'false' }}"
-          >{{ _('prefs.lang_en') }}</button>
-          <button
-            type="submit"
-            name="lang"
-            value="ru"
-            class="pref-btn{% if lang == 'ru' %} is-active{% endif %}"
-            aria-pressed="{{ 'true' if lang == 'ru' else 'false' }}"
-          >{{ _('prefs.lang_ru') }}</button>
-        </form>
-      </div>
-      <nav class="site-nav">
+  <header class="topbar">
+    <a class="mark" href="{{ url_for('posts.feed') }}">Aftertaste</a>
+
+    <div class="topbar-cluster">
+      <details class="look">
+        <summary class="look-summary">{{ _('prefs.look') }}</summary>
+        <div class="look-panel" aria-label="{{ _('prefs.theme') }} / {{ _('prefs.accent') }} / {{ _('prefs.lang') }}">
+          <form action="{{ url_for('prefs.set_theme') }}" method="post" class="seg">
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <span class="seg-label">{{ _('prefs.theme') }}</span>
+            <div class="seg-row">
+              <button type="submit" name="theme" value="light" class="seg-btn{% if theme == 'light' %} is-on{% endif %}" aria-pressed="{{ 'true' if theme == 'light' else 'false' }}">{{ _('prefs.theme_light') }}</button>
+              <button type="submit" name="theme" value="dark" class="seg-btn{% if theme == 'dark' %} is-on{% endif %}" aria-pressed="{{ 'true' if theme == 'dark' else 'false' }}">{{ _('prefs.theme_dark') }}</button>
+            </div>
+          </form>
+
+          <form action="{{ url_for('prefs.set_accent') }}" method="post" class="seg">
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <span class="seg-label">{{ _('prefs.accent') }}</span>
+            <div class="seg-row swatches">
+              {% for name in accents %}
+                <button
+                  type="submit"
+                  name="accent"
+                  value="{{ name }}"
+                  class="swatch{% if accent == name %} is-on{% endif %}"
+                  style="--swatch: {{ accent_swatches[name] }}"
+                  title="{{ _('prefs.accent_' ~ name) }}"
+                  aria-label="{{ _('prefs.accent_' ~ name) }}"
+                  aria-pressed="{{ 'true' if accent == name else 'false' }}"
+                ></button>
+              {% endfor %}
+            </div>
+          </form>
+
+          <form action="{{ url_for('prefs.set_lang') }}" method="post" class="seg">
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <span class="seg-label">{{ _('prefs.lang') }}</span>
+            <div class="seg-row">
+              <button type="submit" name="lang" value="en" class="seg-btn{% if lang == 'en' %} is-on{% endif %}" aria-pressed="{{ 'true' if lang == 'en' else 'false' }}">{{ _('prefs.lang_en') }}</button>
+              <button type="submit" name="lang" value="ru" class="seg-btn{% if lang == 'ru' %} is-on{% endif %}" aria-pressed="{{ 'true' if lang == 'ru' else 'false' }}">{{ _('prefs.lang_ru') }}</button>
+            </div>
+          </form>
+        </div>
+      </details>
+
+      <nav class="nav">
         {% if g.user %}
-          <a href="{{ url_for('posts.new_post') }}">{{ _('nav.write') }}</a>
+          <a class="nav-link" href="{{ url_for('posts.new_post') }}">{{ _('nav.write') }}</a>
           <span class="nav-user">{{ g.user.username }}</span>
           <form action="{{ url_for('auth.logout') }}" method="post" class="inline-form">
-            <button type="submit" class="linkish">{{ _('nav.sign_out') }}</button>
+            <button type="submit" class="nav-link as-button">{{ _('nav.sign_out') }}</button>
           </form>
         {% else %}
-          <a href="{{ url_for('auth.login') }}">{{ _('nav.log_in') }}</a>
-          <a class="btn btn-small" href="{{ url_for('auth.register') }}">{{ _('nav.join') }}</a>
+          <a class="nav-link" href="{{ url_for('auth.login') }}">{{ _('nav.log_in') }}</a>
+          <a class="btn btn-sm" href="{{ url_for('auth.register') }}">{{ _('nav.join') }}</a>
         {% endif %}
       </nav>
     </div>
@@ -90,7 +85,7 @@
 
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-      <div class="flash-wrap" role="status">
+      <div class="flash-rail" role="status">
         {% for category, message in messages %}
           <p class="flash flash-{{ category }}">{{ message }}</p>
         {% endfor %}
