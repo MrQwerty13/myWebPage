@@ -44,3 +44,8 @@ export SECRET_KEY='your-flask-secret'
 ```
 
 Data is saved under `storage/data/*.json` (created automatically on first run).
+
+
+### Hosting
+
+The current url of the web-app is https://drink.pythonanywhere.com
