@@ -16,7 +16,7 @@ def create_app() -> Flask:
     )
     app.config["MODERATION_KEY"] = os.environ.get(
         "MODERATION_KEY",
-        "aftertaste-mod",
+        "wanna_clean",
     )
 
     app.register_blueprint(auth_bp)
