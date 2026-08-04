@@ -6,39 +6,36 @@ from models.user import new_id, utc_now_iso
 
 
 @dataclass
-class Post:
+class Comment:
     id: str
+    post_id: str
     author_id: str
-    drink_name: str
     content: str
     created_at: str
-    updated_at: str | None = None
 
     @classmethod
-    def create(cls, author_id: str, drink_name: str, content: str) -> Post:
+    def create(cls, post_id: str, author_id: str, content: str) -> Comment:
         return cls(
-            id=new_id("p"),
+            id=new_id("c"),
+            post_id=post_id,
             author_id=author_id,
-            drink_name=drink_name.strip(),
             content=content.strip(),
             created_at=utc_now_iso(),
-            updated_at=None,
         )
 
     def to_dict(self) -> dict:
         return asdict(self)
 
     @classmethod
-    def from_dict(cls, data: dict) -> Post:
+    def from_dict(cls, data: dict) -> Comment:
         return cls(
             id=data["id"],
+            post_id=data["post_id"],
             author_id=data["author_id"],
-            drink_name=data["drink_name"],
             content=data["content"],
             created_at=data["created_at"],
-            updated_at=data.get("updated_at"),
         )
 
     @classmethod
-    def from_row(cls, row) -> Post:
+    def from_row(cls, row) -> Comment:
         return cls.from_dict(dict(row))

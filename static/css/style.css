@@ -751,6 +751,128 @@ button.btn-danger:hover {
   color: var(--leaf);
 }
 
+.text-link.as-button {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.text-link.as-button:hover {
+  color: var(--leaf);
+}
+
+.danger-link,
+.danger-link:hover {
+  color: var(--danger);
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.comments {
+  max-width: 34rem;
+  padding: 2rem 0 1rem;
+  border-top: 1px solid var(--line);
+  margin-top: 0.5rem;
+}
+
+.comments-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.comment {
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+  animation: rise 0.4s ease both;
+  animation-delay: calc(var(--i, 0) * 40ms);
+}
+
+.comment:first-child {
+  border-top: 0;
+}
+
+.comment-body {
+  margin: 0;
+  font-size: 1.02rem;
+  white-space: pre-wrap;
+}
+
+.comment-form {
+  margin-top: 1.25rem;
+}
+
+.about-sheet {
+  max-width: 38rem;
+}
+
+.about-role {
+  margin: 0.55rem 0 0;
+  color: var(--leaf-deep);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.about-body {
+  margin-top: 1.35rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.about-body p {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.about-facts {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.about-facts li {
+  display: grid;
+  gap: 0.2rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+
+.about-fact-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.about-facts a {
+  color: var(--leaf);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.about-facts a:hover {
+  text-decoration: underline;
+}
+
+.about-actions {
+  margin-top: 1.75rem;
+}
+
 .empty {
   color: var(--ink-soft);
   padding: 1rem 0;

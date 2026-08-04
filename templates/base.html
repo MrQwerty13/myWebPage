@@ -26,6 +26,7 @@
     <a class="mark" href="{{ url_for('posts.feed') }}">Aftertaste</a>
 
     <nav class="nav">
+      <a class="nav-link" href="{{ url_for('posts.about') }}">{{ _('nav.about') }}</a>
       <a class="nav-link" href="{{ url_for('auth.settings') }}">{{ _('nav.settings') }}</a>
       {% if g.user %}
         <a class="nav-link" href="{{ url_for('posts.new_post') }}">{{ _('nav.write') }}</a>

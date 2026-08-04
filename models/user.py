@@ -44,6 +44,10 @@ class User:
             created_at=data["created_at"],
         )
 
+    @classmethod
+    def from_row(cls, row) -> User:
+        return cls.from_dict(dict(row))
+
     def public_dict(self) -> dict:
         return {
             "id": self.id,

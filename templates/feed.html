@@ -47,6 +47,12 @@
                 <span class="like-label">{% if post.liked %}{{ _('liked') }}{% else %}{{ _('like') }}{% endif %}</span>
                 <span class="like-count" data-count>{{ post.like_count }}</span>
               </button>
+              <a class="text-link" href="{{ url_for('posts.detail', post_id=post.id) }}">
+                {{ _('feed.comments', count=post.comment_count) }}
+              </a>
+              {% if post.is_owner %}
+                <a class="text-link" href="{{ url_for('posts.edit_post', post_id=post.id) }}">{{ _('post.edit') }}</a>
+              {% endif %}
               <a class="text-link" href="{{ url_for('posts.detail', post_id=post.id) }}">{{ _('feed.open') }}</a>
             </div>
           </div>

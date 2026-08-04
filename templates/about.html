@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('about.title') }}{% endblock %}
+{% block body_class %}page-about{% endblock %}
+
+{% block content %}
+<article class="sheet about-sheet">
+  <p class="sheet-kicker">{{ _('about.kicker') }}</p>
+  <h1>{{ _('about.heading') }}</h1>
+  <p class="about-role">{{ _('about.role') }}</p>
+
+  <div class="about-body">
+    <p>{{ _('about.p1') }}</p>
+    <p>{{ _('about.p2') }}</p>
+    <p>{{ _('about.p3') }}</p>
+  </div>
+
+  <ul class="about-facts">
+    <li>
+      <span class="about-fact-label">{{ _('about.based') }}</span>
+      <span>{{ _('about.based_value') }}</span>
+    </li>
+    <li>
+      <span class="about-fact-label">{{ _('about.stack') }}</span>
+      <span>{{ _('about.stack_value') }}</span>
+    </li>
+    <li>
+      <span class="about-fact-label">{{ _('about.elsewhere') }}</span>
+      <a href="https://github.com/MrQwerty13" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </li>
+  </ul>
+
+  <div class="hero-actions about-actions">
+    <a class="btn" href="{{ url_for('posts.feed') }}">{{ _('about.back') }}</a>
+    <a class="btn btn-ghost" href="https://github.com/MrQwerty13/myWebPage" target="_blank" rel="noopener noreferrer">{{ _('about.repo') }}</a>
+  </div>
+</article>
+{% endblock %}

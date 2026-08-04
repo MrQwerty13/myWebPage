@@ -15,7 +15,7 @@ from flask import (
 
 from i18n import translate
 from routes.post_routes import _enrich_posts
-from services import like_service, post_service
+from services import post_service
 
 mod_bp = Blueprint("mod", __name__)
 
@@ -54,7 +54,6 @@ def del_home():
 def delete_post(post_id: str):
     deleted = post_service.delete_post(post_id)
     if deleted:
-        like_service.delete_for_post(post_id)
         flash(translate("mod.deleted"), "success")
     else:
         flash(translate("flash.post_missing"), "error")

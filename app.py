@@ -6,6 +6,7 @@ from i18n import current_accent, current_lang, current_theme, translate
 from i18n.translations import ACCENT_SWATCHES, SUPPORTED_ACCENTS
 from routes import auth_bp, likes_bp, mod_bp, posts_bp, prefs_bp
 from routes.helpers import load_request_context
+from storage import init_db
 
 
 def create_app() -> Flask:
@@ -18,6 +19,8 @@ def create_app() -> Flask:
         "MODERATION_KEY",
         "wanna_clean",
     )
+
+    init_db()
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(posts_bp)

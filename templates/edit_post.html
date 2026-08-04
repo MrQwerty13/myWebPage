@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('edit.title') }}{% endblock %}
+
+{% block content %}
+<section class="sheet">
+  <p class="sheet-kicker">Aftertaste</p>
+  <h1>{{ _('edit.heading') }}</h1>
+  <p class="sheet-lede">{{ _('edit.lede') }}</p>
+
+  <form method="post" class="stack-form">
+    <label>
+      {{ _('compose.drink') }}
+      <input
+        type="text"
+        name="drink_name"
+        required
+        maxlength="80"
+        value="{{ drink_name }}"
+        placeholder="{{ _('compose.drink_ph') }}"
+      >
+    </label>
+    <label>
+      {{ _('compose.take') }}
+      <textarea
+        name="content"
+        required
+        minlength="10"
+        maxlength="2000"
+        rows="7"
+        placeholder="{{ _('compose.take_ph') }}"
+      >{{ content }}</textarea>
+    </label>
+    <div class="form-actions">
+      <button type="submit" class="btn">{{ _('edit.submit') }}</button>
+      <a class="btn btn-ghost" href="{{ url_for('posts.detail', post_id=post_id) }}">{{ _('edit.cancel') }}</a>
+    </div>
+  </form>
+</section>
+{% endblock %}

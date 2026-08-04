@@ -6,14 +6,17 @@ import sys
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
-from services import auth_service, like_service, post_service
-from storage import likes_store, posts_store, users_store
+from services import auth_service, comment_service, like_service, post_service
+from storage import connect, init_db
 
 
 def main() -> None:
-    users_store.save_all([])
-    posts_store.save_all([])
-    likes_store.save_all([])
+    init_db()
+    with connect() as conn:
+        conn.execute("DELETE FROM comments")
+        conn.execute("DELETE FROM likes")
+        conn.execute("DELETE FROM posts")
+        conn.execute("DELETE FROM users")
 
     anna = auth_service.create_user("anna", "anna@example.com", "password")
     leo = auth_service.create_user("leo", "leo@example.com", "password")
@@ -37,8 +40,19 @@ def main() -> None:
     like_service.toggle_like(p1.id, leo.id)
     like_service.toggle_like(p2.id, anna.id)
 
+    comment_service.create_comment(
+        p1.id,
+        leo.id,
+        "That oat milk texture is exactly what I chase on weekday mornings.",
+    )
+    comment_service.create_comment(
+        p2.id,
+        anna.id,
+        "Agree on the big ice cube — keeps the bitterness honest.",
+    )
+
     print("Seeded users: anna@example.com / leo@example.com (password: password)")
-    print("Seeded 3 posts and a couple of likes.")
+    print("Seeded 3 posts, likes, and comments.")
 
 
 if __name__ == "__main__":

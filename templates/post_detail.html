@@ -10,6 +10,9 @@
   <div class="note-meta">
     <span>{{ _('feed.by', name=post.author_name) }}</span>
     <span>{{ post.created_label }}</span>
+    {% if post.edited %}
+      <span>{{ _('detail.edited', when=post.updated_label) }}</span>
+    {% endif %}
   </div>
   <div class="note-actions">
     <button
@@ -22,7 +25,77 @@
       <span class="like-label">{% if post.liked %}{{ _('liked') }}{% else %}{{ _('like') }}{% endif %}</span>
       <span class="like-count" data-count>{{ post.like_count }}</span>
     </button>
+    {% if post.is_owner %}
+      <a class="text-link" href="{{ url_for('posts.edit_post', post_id=post.id) }}">{{ _('post.edit') }}</a>
+      <form
+        action="{{ url_for('posts.delete_own_post', post_id=post.id) }}"
+        method="post"
+        class="inline-form"
+        onsubmit="return confirm({{ _('post.delete_confirm')|tojson }});"
+      >
+        <button type="submit" class="text-link as-button danger-link">{{ _('post.delete') }}</button>
+      </form>
+    {% endif %}
     <a class="text-link" href="{{ url_for('posts.feed') }}">{{ _('detail.back') }}</a>
   </div>
 </article>
+
+<section class="comments" aria-labelledby="comments-heading">
+  <header class="notes-head">
+    <h2 id="comments-heading">{{ _('comments.heading') }}</h2>
+    <p>{{ _('comments.lede') }}</p>
+  </header>
+
+  {% if comments %}
+    <ol class="comments-list">
+      {% for comment in comments %}
+        <li class="comment" style="--i: {{ loop.index0 }}">
+          <p class="comment-body">{{ comment.content }}</p>
+          <div class="note-meta">
+            <span>{{ _('feed.by', name=comment.author_name) }}</span>
+            <span>{{ comment.created_label }}</span>
+          </div>
+          {% if comment.is_owner %}
+            <div class="note-actions">
+              <form
+                action="{{ url_for('posts.delete_comment', post_id=post.id, comment_id=comment.id) }}"
+                method="post"
+                class="inline-form"
+                onsubmit="return confirm({{ _('comments.delete_confirm')|tojson }});"
+              >
+                <button type="submit" class="text-link as-button danger-link">{{ _('comments.delete') }}</button>
+              </form>
+            </div>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  {% else %}
+    <p class="empty">{{ _('comments.empty') }}</p>
+  {% endif %}
+
+  {% if g.user %}
+    <form
+      action="{{ url_for('posts.add_comment', post_id=post.id) }}"
+      method="post"
+      class="stack-form comment-form"
+    >
+      <label>
+        {{ _('comments.field') }}
+        <textarea
+          name="content"
+          required
+          maxlength="1000"
+          rows="3"
+          placeholder="{{ _('comments.ph') }}"
+        ></textarea>
+      </label>
+      <button type="submit" class="btn">{{ _('comments.submit') }}</button>
+    </form>
+  {% else %}
+    <p class="empty">
+      <a class="text-link" href="{{ url_for('auth.login') }}">{{ _('comments.login') }}</a>
+    </p>
+  {% endif %}
+</section>
 {% endblock %}

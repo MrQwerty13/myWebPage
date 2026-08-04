@@ -32,3 +32,7 @@ class Like:
             user_id=data["user_id"],
             created_at=data["created_at"],
         )
+
+    @classmethod
+    def from_row(cls, row) -> Like:
+        return cls.from_dict(dict(row))
