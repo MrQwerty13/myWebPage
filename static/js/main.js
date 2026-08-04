@@ -45,4 +45,26 @@
       }
     });
   });
+
+  const accentSlider = document.getElementById("accent-slider");
+  const accentPreview = document.getElementById("accent-preview");
+  const accentForm = document.getElementById("accent-form");
+
+  if (accentSlider) {
+    const applyHue = (hue) => {
+      document.documentElement.style.setProperty("--accent-h", String(hue));
+      if (accentPreview) {
+        accentPreview.style.background = `hsl(${hue} 70% 48%)`;
+      }
+    };
+
+    accentSlider.addEventListener("input", () => {
+      applyHue(accentSlider.value);
+    });
+
+    // Persist when the user finishes dragging.
+    accentSlider.addEventListener("change", () => {
+      if (accentForm) accentForm.requestSubmit();
+    });
+  }
 })();

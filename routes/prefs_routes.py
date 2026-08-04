@@ -40,5 +40,10 @@ def set_lang():
 def set_accent():
     accent = normalize_accent(request.form.get("accent"))
     response = redirect(_safe_next())
-    response.set_cookie(ACCENT_COOKIE, accent, max_age=COOKIE_MAX_AGE, samesite="Lax")
+    response.set_cookie(
+        ACCENT_COOKIE,
+        str(accent),
+        max_age=COOKIE_MAX_AGE,
+        samesite="Lax",
+    )
     return response

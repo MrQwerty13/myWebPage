@@ -34,7 +34,7 @@ python seed.py
 5. Like (or unlike) posts
 6. Comment on posts
 7. Theme: light / dark (saved in a cookie)
-8. Accent color: lime / red / blue / amber / teal (saved in a cookie)
+8. Accent color: RGB hue strip slider (saved in a cookie)
 9. Language: English / Russian (saved in a cookie)
 10. Founder / about page at `/about`
 11. Secret moderation panel at `/del` (not linked in the UI)

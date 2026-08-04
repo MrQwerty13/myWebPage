@@ -21,22 +21,33 @@
       </div>
     </form>
 
-    <form action="{{ url_for('prefs.set_accent') }}" method="post" class="seg">
+    <form
+      action="{{ url_for('prefs.set_accent') }}"
+      method="post"
+      class="seg accent-form"
+      id="accent-form"
+    >
       <input type="hidden" name="next" value="{{ url_for('auth.settings') }}">
-      <span class="seg-label">{{ _('prefs.accent') }}</span>
-      <div class="seg-row swatches">
-        {% for name in accents %}
-          <button
-            type="submit"
-            name="accent"
-            value="{{ name }}"
-            class="swatch{% if accent == name %} is-on{% endif %}"
-            style="--swatch: {{ accent_swatches[name] }}"
-            title="{{ _('prefs.accent_' ~ name) }}"
-            aria-label="{{ _('prefs.accent_' ~ name) }}"
-            aria-pressed="{{ 'true' if accent == name else 'false' }}"
-          ></button>
-        {% endfor %}
+      <span class="seg-label" id="accent-label">{{ _('prefs.accent') }}</span>
+      <p class="settings-hint accent-hint">{{ _('prefs.accent_hint') }}</p>
+      <div class="accent-slider-row">
+        <input
+          type="range"
+          name="accent"
+          class="accent-slider"
+          id="accent-slider"
+          min="0"
+          max="360"
+          step="1"
+          value="{{ accent }}"
+          aria-labelledby="accent-label"
+        >
+        <span
+          class="accent-preview"
+          id="accent-preview"
+          style="background: hsl({{ accent }} 70% 48%)"
+          aria-hidden="true"
+        ></span>
       </div>
     </form>
 

@@ -3,12 +3,11 @@ from __future__ import annotations
 from flask import g, request
 
 from i18n.translations import (
-    ACCENT_SWATCHES,
-    DEFAULT_ACCENT,
+    DEFAULT_ACCENT_HUE,
     DEFAULT_LANG,
     DEFAULT_THEME,
+    LEGACY_ACCENT_HUES,
     STRINGS,
-    SUPPORTED_ACCENTS,
     SUPPORTED_LANGS,
     SUPPORTED_THEMES,
 )
@@ -31,10 +30,17 @@ def normalize_lang(value: str | None) -> str:
     return DEFAULT_LANG
 
 
-def normalize_accent(value: str | None) -> str:
-    if value in SUPPORTED_ACCENTS:
-        return value
-    return DEFAULT_ACCENT
+def normalize_accent(value: str | None) -> int:
+    """Accent is a hue 0–360. Legacy named cookies still resolve."""
+    if value is None or value == "":
+        return DEFAULT_ACCENT_HUE
+    if value in LEGACY_ACCENT_HUES:
+        return LEGACY_ACCENT_HUES[value]
+    try:
+        hue = int(round(float(value)))
+    except (TypeError, ValueError):
+        return DEFAULT_ACCENT_HUE
+    return max(0, min(360, hue))
 
 
 def current_theme() -> str:
@@ -45,8 +51,8 @@ def current_lang() -> str:
     return getattr(g, "lang", DEFAULT_LANG)
 
 
-def current_accent() -> str:
-    return getattr(g, "accent", DEFAULT_ACCENT)
+def current_accent() -> int:
+    return getattr(g, "accent", DEFAULT_ACCENT_HUE)
 
 
 def translate(key: str, **kwargs) -> str:

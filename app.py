@@ -3,7 +3,6 @@ import os
 from flask import Flask
 
 from i18n import current_accent, current_lang, current_theme, translate
-from i18n.translations import ACCENT_SWATCHES, SUPPORTED_ACCENTS
 from routes import auth_bp, likes_bp, mod_bp, posts_bp, prefs_bp
 from routes.helpers import load_request_context
 from storage import init_db
@@ -37,8 +36,6 @@ def create_app() -> Flask:
             "theme": current_theme(),
             "lang": current_lang(),
             "accent": current_accent(),
-            "accents": SUPPORTED_ACCENTS,
-            "accent_swatches": ACCENT_SWATCHES,
         }
 
     return app

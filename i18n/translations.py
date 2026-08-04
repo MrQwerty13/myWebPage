@@ -15,11 +15,10 @@ STRINGS: dict[str, dict[str, str]] = {
     "prefs.lang_en": {"en": "EN", "ru": "EN"},
     "prefs.lang_ru": {"en": "RU", "ru": "RU"},
     "prefs.accent": {"en": "Color", "ru": "Цвет"},
-    "prefs.accent_lime": {"en": "Lime", "ru": "Лайм"},
-    "prefs.accent_red": {"en": "Red", "ru": "Красный"},
-    "prefs.accent_blue": {"en": "Blue", "ru": "Синий"},
-    "prefs.accent_amber": {"en": "Amber", "ru": "Янтарный"},
-    "prefs.accent_teal": {"en": "Teal", "ru": "Бирюза"},
+    "prefs.accent_hint": {
+        "en": "Drag the strip to pick an accent.",
+        "ru": "Потяните полоску, чтобы выбрать акцент.",
+    },
     # Feed
     "feed.title": {
         "en": "Aftertaste — drinks, then opinions",
@@ -295,16 +294,15 @@ STRINGS: dict[str, dict[str, str]] = {
 
 SUPPORTED_LANGS = ("en", "ru")
 SUPPORTED_THEMES = ("light", "dark")
-SUPPORTED_ACCENTS = ("lime", "red", "blue", "amber", "teal")
 DEFAULT_LANG = "en"
 DEFAULT_THEME = "light"
-DEFAULT_ACCENT = "lime"
+DEFAULT_ACCENT_HUE = 95  # lime-green default
 
-# Swatch colors shown in the accent picker (UI only).
-ACCENT_SWATCHES = {
-    "lime": "#b6d63a",
-    "red": "#e85d4c",
-    "blue": "#4c8dff",
-    "amber": "#e6a23c",
-    "teal": "#2db8a0",
+# Map legacy named accent cookies to hues.
+LEGACY_ACCENT_HUES = {
+    "lime": 95,
+    "red": 8,
+    "blue": 217,
+    "amber": 38,
+    "teal": 170,
 }
