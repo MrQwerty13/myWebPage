@@ -1,16 +1,32 @@
 # Deployment instructions
 
-This guide covers trusted local-network hosting and a framework-dependent Release
-deployment. Public internet hosting should add HTTPS, a reverse proxy, and the
-security work listed in [ROADMAP.md](ROADMAP.md).
+This guide covers public static hosting on GitHub Pages, trusted local-network
+hosting, and a framework-dependent ASP.NET Release deployment.
 
 ## Deployment modes
 
 | Mode | Intended use | Address |
 | --- | --- | --- |
+| GitHub Pages | Public portfolio | `https://mrqwerty13.github.io/myWebPage/` |
 | Local only | Development on one computer | `http://127.0.0.1:8080` |
 | Local network | Review from phones or other trusted devices | `http://<computer-ip>:8080` |
 | Release process | Stable process behind a reverse proxy or private network | Host-specific |
+
+## GitHub Pages hosting
+
+The repository includes `.github/workflows/pages.yml`. It uploads
+`src/Portfolio/wwwroot` and deploys it whenever `main` changes.
+
+Enable it once on GitHub:
+
+1. Open the repository's **Settings → Pages**.
+2. Under **Build and deployment**, select **GitHub Actions** as the source.
+3. Push this change to `main`, or run the workflow manually from **Actions**.
+4. Open `https://mrqwerty13.github.io/myWebPage/` after deployment succeeds.
+
+The Pages version is entirely static. Project cards load from `projects.json`,
+so the portfolio works without a .NET process. The `/api/projects` and `/health`
+routes are not available on Pages; they remain part of ASP.NET hosting.
 
 ## Local network hosting
 
@@ -126,9 +142,10 @@ dotnet /tmp/mikhail-portfolio/Portfolio.dll
 Bind to `127.0.0.1` when a reverse proxy on the same computer is the only client.
 Bind to `0.0.0.0` only when direct network access is intended.
 
-## Public hosting requirements
+## Public ASP.NET hosting requirements
 
-Before exposing the application directly to the public internet:
+These requirements apply only when exposing the ASP.NET application and API to
+the public internet instead of using the static Pages deployment:
 
 1. Place Kestrel behind a maintained reverse proxy or managed .NET host.
 2. Enable HTTPS with a trusted certificate and redirect HTTP to HTTPS.
@@ -166,6 +183,9 @@ are selected, because image names and host requirements are deployment-specific.
 
 ## Deployment checklist
 
+- [ ] GitHub Pages uses **GitHub Actions** as its publishing source.
+- [ ] The Pages workflow succeeds for the intended commit.
+- [ ] The Pages URL loads CSS, JavaScript, and all five project cards.
 - [ ] Repository is clean and the intended commit is checked out.
 - [ ] Release restore, build, and tests pass.
 - [ ] Static assets and all five project cards render.

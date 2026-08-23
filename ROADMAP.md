@@ -49,6 +49,12 @@ Items are ordered by product value and dependency rather than by idea size.
 - Verified API responses, JavaScript syntax, browser console, and horizontal
   overflow behavior.
 
+### Static public hosting
+
+- Added a single JSON catalog consumed by both the browser and ASP.NET API.
+- Added repository-relative asset paths for project-site hosting.
+- Added an automatic GitHub Pages deployment workflow.
+
 ## Next: release 0.4 — case studies
 
 - [ ] Add a dedicated route and detail view for each featured project.

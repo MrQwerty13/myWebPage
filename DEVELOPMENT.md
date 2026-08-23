@@ -71,7 +71,7 @@ dotnet run --project src/Portfolio/Portfolio.csproj \
 Project data lives in:
 
 ```text
-src/Portfolio/Services/ProjectCatalog.cs
+src/Portfolio/wwwroot/projects.json
 ```
 
 Each `PortfolioProject` requires:
@@ -100,7 +100,7 @@ curl http://localhost:8080/api/projects/cupit
 | --- | --- |
 | `src/Portfolio/wwwroot/index.html` | Page structure, text, metadata, or reusable card template changes |
 | `src/Portfolio/wwwroot/css/site.css` | Layout, typography, colors, animation, or breakpoints change |
-| `src/Portfolio/wwwroot/js/site.js` | API rendering, navigation, or browser interaction changes |
+| `src/Portfolio/wwwroot/js/site.js` | Catalog rendering, navigation, or browser interaction changes |
 
 When editing the interface, check at least these widths:
 
@@ -112,7 +112,7 @@ Also verify:
 
 - there is no horizontal scrolling;
 - the mobile menu opens, closes, and follows links;
-- all five project cards render after the API request;
+- all five project cards render after the catalog request;
 - project links have useful accessible names;
 - keyboard focus remains visible;
 - reduced-motion mode does not hide content;
@@ -195,7 +195,7 @@ Do not commit generated `bin`, `obj`, or `TestResults` directories.
 
 ### The page loads but no projects appear
 
-1. Open `http://localhost:8080/api/projects` directly.
+1. Open `http://localhost:8080/projects.json` directly.
 2. Confirm it returns a JSON array.
 3. Check the browser console for a fetch or JavaScript error.
 4. Confirm `site.js` passes the syntax check.

@@ -47,7 +47,7 @@ function createProjectCard(project) {
 
 async function loadProjects() {
   try {
-    const response = await fetch('/api/projects');
+    const response = await fetch('./projects.json');
     if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
     const projects = await response.json();
     const fragment = document.createDocumentFragment();

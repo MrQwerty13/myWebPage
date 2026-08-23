@@ -23,12 +23,12 @@ or a separate Node.js frontend build.
 | Semantic HTML5 | Page structure, accessibility landmarks, and project-card template |
 | Modern CSS | Layout, responsive breakpoints, visual system, animations, and reduced motion |
 | Vanilla JavaScript | Fetching project data, rendering cards, navigation, and reveal behavior |
-| Fetch API | Communication with the ASP.NET Core project endpoint |
+| Fetch API | Loading the shared static project catalog |
 | Intersection Observer | Lightweight viewport-based reveal animation |
 
 The frontend intentionally has no package manager or framework. This reduces
-startup time, avoids a second build pipeline, and keeps the site deployable as
-ordinary static assets served by ASP.NET Core.
+startup time, avoids a second frontend build pipeline, and keeps the site
+deployable through either ASP.NET Core or GitHub Pages.
 
 ## Testing
 
@@ -48,7 +48,10 @@ are planned for the next quality milestone.
 ```text
 Browser
   ├── GET /                 ──> wwwroot/index.html
-  ├── GET /css, /js         ──> ASP.NET Core static files
+  ├── GET /css, /js         ──> Static files
+  └── GET /projects.json    ──> Static project catalog
+
+ASP.NET hosting (optional)
   ├── GET /api/projects     ──> ProjectCatalog ──> PortfolioProject[]
   ├── GET /api/projects/:id ──> ProjectCatalog ──> PortfolioProject | 404
   └── GET /health           ──> Health response
@@ -59,11 +62,12 @@ Browser
 1. **Presentation** — `wwwroot` contains the static page, shared CSS, and browser
    behavior.
 2. **HTTP boundary** — `Program.cs` configures middleware and exposes the API.
-3. **Application data** — `ProjectCatalog` owns the curated portfolio selection.
+3. **Application data** — `projects.json` is the shared curated source;
+   `ProjectCatalog` reads its embedded copy for the optional API.
 4. **Domain shape** — `PortfolioProject` defines the serialized project contract.
 
-The browser does not duplicate project content. It receives a typed JSON payload
-from the backend and creates the project cards from a reusable HTML template.
+The browser and backend do not duplicate project content. Both consume the same
+JSON file, and the browser creates cards from a reusable HTML template.
 
 ## Design system
 

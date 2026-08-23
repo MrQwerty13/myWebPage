@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "cupit",
+    "name": "CupIT",
+    "eyebrow": "Cafe intelligence",
+    "tagline": "Every receipt becomes a clearer decision.",
+    "description": "A local-first analytics platform that turns cafe sales data into useful KPIs, product rankings, trends, and AI-assisted recommendations without exposing raw business data.",
+    "score": 9.5,
+    "year": 2026,
+    "repositoryUrl": "https://github.com/MrQwerty13/CupIT",
+    "accent": "lime",
+    "technologies": ["Python", "Flask", "Next.js", "TypeScript", "Docker", "Ollama"],
+    "highlights": ["10+ operational KPIs", "Private local AI", "Tested data pipeline"],
+    "featured": true
+  },
+  {
+    "slug": "fried-sausages",
+    "name": "FriedSausages",
+    "eyebrow": "Security operations",
+    "tagline": "Infrastructure risk, brought into focus.",
+    "description": "A full-stack security operations dashboard for assets, vulnerabilities, compliance, evidence archives, reporting, and scheduled checks, supported by a typed domain model and automated tests.",
+    "score": 8.7,
+    "year": 2026,
+    "repositoryUrl": "https://github.com/MrQwerty13/FriedSausages",
+    "accent": "violet",
+    "technologies": ["React", "TypeScript", "Python", "PostgreSQL", "Docker"],
+    "highlights": ["Compliance workflows", "Integrity tooling", "Tested backend models"],
+    "featured": true
+  },
+  {
+    "slug": "chatic",
+    "name": "Chatic",
+    "eyebrow": "Realtime messaging",
+    "tagline": "Private conversations. Instantly familiar.",
+    "description": "A browser messenger with private chats, accounts, typing state, profiles, themes, and a resilient realtime layer that falls back from WebSockets to polling when hosting requires it.",
+    "score": 8.5,
+    "year": 2026,
+    "repositoryUrl": "https://github.com/MrQwerty13/chatic",
+    "accent": "blue",
+    "technologies": ["Python", "Flask", "Socket.IO", "JavaScript", "HTML/CSS"],
+    "highlights": ["Realtime and polling", "Profile customization", "Deployment-ready"],
+    "featured": true
+  },
+  {
+    "slug": "aftertaste",
+    "name": "Aftertaste",
+    "eyebrow": "Social tasting journal",
+    "tagline": "Small opinions. Shared beautifully.",
+    "description": "A bilingual social journal for short takes on drinks, with a personal feed, accounts, comments, reactions, moderation, themes, and a live deployment.",
+    "score": 8.2,
+    "year": 2026,
+    "repositoryUrl": "https://github.com/MrQwerty13/Aftertaste",
+    "accent": "orange",
+    "technologies": ["Python", "Flask", "SQLite", "Jinja", "JavaScript"],
+    "highlights": ["Live deployment", "English and Russian", "Custom themes"],
+    "featured": true
+  },
+  {
+    "slug": "task-tracker",
+    "name": "TaskTracker",
+    "eyebrow": "Focused productivity",
+    "tagline": "A simple list with a surprisingly solid core.",
+    "description": "A small task manager whose web and console interfaces share the same service layer, with atomic JSON persistence, migration support, and a compact HTTP API.",
+    "score": 8.0,
+    "year": 2026,
+    "repositoryUrl": "https://github.com/MrQwerty13/TaskTrackerPyVersion",
+    "accent": "coral",
+    "technologies": ["Python", "Flask", "JavaScript", "JSON"],
+    "highlights": ["Web and console UI", "Atomic persistence", "Layered architecture"],
+    "featured": true
+  }
+]

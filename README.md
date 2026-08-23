@@ -2,8 +2,8 @@
 
 A responsive developer portfolio that presents the strongest projects from
 [MrQwerty13's GitHub profile](https://github.com/MrQwerty13). The site combines
-an Apple-inspired visual language with a small ASP.NET Core backend that serves
-the frontend and exposes the project catalog as JSON.
+an Apple-inspired visual language with a small ASP.NET Core backend for local/API
+use. The same frontend is deployable as a static GitHub Pages site.
 
 ## Current release
 
@@ -25,13 +25,14 @@ The complete review and scoring rationale are available in
 ## Features
 
 - Responsive single-page portfolio for desktop, tablet, and mobile
-- Project content supplied by a typed C# catalog
+- Project content supplied by one version-controlled JSON catalog
 - JSON endpoints for the complete catalog and individual projects
 - Health endpoint for local and hosted monitoring
 - Accessible navigation, semantic content, and keyboard skip link
 - Reduced-motion support for visitors who request it
 - Mobile navigation and touch-friendly controls
 - Local network hosting through Kestrel on port `8080`
+- Automatic static deployment to GitHub Pages
 - Automated tests for selection rules and catalog integrity
 
 ## Quick start
@@ -65,6 +66,21 @@ dotnet test MyWebPage.slnx --no-build
 The current test suite contains six checks covering the featured-project
 threshold, score range, slug uniqueness, expected selection, and project lookup.
 
+## GitHub Pages
+
+The workflow in `.github/workflows/pages.yml` publishes the static portfolio on
+every push to `main`. In the repository on GitHub, open **Settings → Pages** and
+choose **GitHub Actions** as the source. After the workflow succeeds, the default
+project-site address is:
+
+```text
+https://mrqwerty13.github.io/myWebPage/
+```
+
+GitHub Pages serves the browser application and `projects.json`; the ASP.NET API
+and `/health` endpoint remain available only when the .NET application is run on
+a server.
+
 ## API
 
 | Method | Endpoint | Purpose |
@@ -89,7 +105,8 @@ myWebPage/
 │   ├── wwwroot/
 │   │   ├── css/site.css        Shared responsive design system
 │   │   ├── js/site.js          Catalog rendering and interactions
-│   │   └── index.html          Portfolio page
+│   │   ├── index.html          Portfolio page
+│   │   └── projects.json       Shared static project catalog
 │   ├── Program.cs              ASP.NET Core application and endpoints
 │   └── Portfolio.csproj
 ├── tests/Portfolio.Tests/      xUnit test project
@@ -98,7 +115,8 @@ myWebPage/
 ├── TECH_STACK.md               Technology and architecture decisions
 ├── ROADMAP.md                  Delivery status and planned work
 ├── DEVELOPMENT.md              Local development and testing instructions
-└── DEPLOYMENT.md               LAN and release hosting instructions
+├── .github/workflows/pages.yml GitHub Pages deployment
+└── DEPLOYMENT.md               Pages, LAN, and release hosting instructions
 ```
 
 ## Documentation
@@ -111,9 +129,9 @@ myWebPage/
 
 ## Status
 
-The portfolio foundation is working and tested. The next release will add real
-project imagery, richer case-study pages, integration tests, SEO metadata, and a
-repeatable deployment package. See [ROADMAP.md](ROADMAP.md) for the full plan.
+The portfolio foundation is working, tested, and ready for GitHub Pages. The next
+release will add real project imagery, richer case-study pages, integration tests,
+and SEO metadata. See [ROADMAP.md](ROADMAP.md) for the full plan.
 
 ## License
 
