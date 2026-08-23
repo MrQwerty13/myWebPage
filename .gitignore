@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# .NET build and editor output
+**/bin/
+**/obj/
+TestResults/
+.DS_Store
+*.user
+*.suo

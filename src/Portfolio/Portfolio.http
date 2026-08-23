@@ -1,0 +1,9 @@
+@Portfolio_HostAddress = http://localhost:8080
+
+GET {{Portfolio_HostAddress}}/health
+Accept: application/json
+
+###
+
+GET {{Portfolio_HostAddress}}/api/projects
+Accept: application/json
